@@ -70,8 +70,11 @@ export interface LocaleContent {
     subhead: string;
     primaryCta: NavLink;
     secondaryCta: NavLink;
-    /** Optional image/video shown as an elegant card below the hero text. */
-    media?: HeroMedia;
+    /**
+     * Optional showcase media for the hero.  Pass a single item or an array;
+     * arrays cycle automatically with a crossfade.
+     */
+    media?: HeroMedia | HeroMedia[];
   };
   features: FeatureCard[];
   quickstart: Quickstart;

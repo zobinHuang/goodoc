@@ -90,20 +90,28 @@ en: {
 ```
 
 - **`hero.media`** is optional — an image or video shown alongside the hero
-  text. Put the file in `public/` and point `src` at it. The `placement` field
-  controls how it appears:
-  - `"below"` (default) — an elegant floating card beneath the hero text.
-  - `"overlap"` — sits in the same height band as the text, shifted to the side
-    with feathered edges so it reads as an ambient backdrop rather than
-    competing with the words.
+  text. Pass a single item **or an array**; arrays crossfade automatically
+  every four seconds. Put files in `public/` and point `src` at them.
+
+  The `placement` field (taken from the first item) controls layout:
+  - `"below"` (default) — an elegant floating card beneath the hero text; dot
+    indicators appear below the card when there are multiple slides.
+  - `"overlap"` — same height band as the text, shifted to the side with
+    feathered edges; auto-advances silently (no visible controls, ambient).
 
   ```ts
+  // single item
   media: { type: "image", src: "/hero.png", alt: "…", placement: "overlap" }
-  // or video:
-  media: { type: "video", src: "/hero.mp4", poster: "/hero.png" }
+
+  // multiple items — crossfade carousel
+  media: [
+    { type: "image", src: "/hero-1.png", alt: "Feature A", placement: "below" },
+    { type: "image", src: "/hero-2.png", alt: "Feature B" },
+    { type: "video", src: "/demo.mp4",  poster: "/demo-poster.png" },
+  ]
   ```
 
-  Videos play as a muted, looping ambient clip. Omit `media` to hide it.
+  Videos play as muted, looping ambient clips. Omit `media` to hide it.
 - **`features[].image`** is optional — provide an SVG/PNG under `public/` to
   illustrate a card, or omit it for text only.
 - **`quickstart`** powers the landing page's install section: a terminal showing

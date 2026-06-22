@@ -1,49 +1,79 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import type { HeroMedia as HeroMediaConfig } from "@/lib/site-config";
 import { withBasePath } from "@/lib/paths";
 
-/** Radial feather: keeps the right-of-centre opaque, fades every edge to
- * transparent — most of all the left edge, which approaches the text. */
 const FEATHER = "radial-gradient(78% 82% at 70% 50%, #000 40%, transparent 80%)";
+const INTERVAL_MS = 4000;
+
+function MediaItem({ media }: { media: HeroMediaConfig }) {
+  return media.type === "video" ? (
+    <video
+      className="block w-full"
+      src={withBasePath(media.src)}
+      poster={media.poster ? withBasePath(media.poster) : undefined}
+      autoPlay
+      loop
+      muted
+      playsInline
+      aria-label={media.alt}
+    />
+  ) : (
+    // Plain <img>: the static export has no next/image optimizer.
+    // eslint-disable-next-line @next/next/no-img-element
+    <img className="block w-full" src={withBasePath(media.src)} alt={media.alt ?? ""} />
+  );
+}
 
 /**
- * Showcase image or video for the hero. Two placements:
+ * Showcase image/video for the hero. Accepts a single item or an array;
+ * arrays crossfade automatically on a timer.
  *
- * - "below"   — a calm floating card beneath the text (rounded, soft shadow).
- * - "overlap" — sits in the same band as the text, shifted to the side with
- *   feathered edges so it reads as an ambient backdrop, never competing with
- *   the words (which render above it).
- *
- * Videos play as muted, looping ambient clips.
+ * Placements:
+ * - "below"   — a calm floating card beneath the text (dot nav shown).
+ * - "overlap" — same band as the text, feathered edges, silent auto-advance.
  */
-export function HeroMedia({ media }: { media: HeroMediaConfig }) {
-  const overlap = media.placement === "overlap";
+export function HeroMedia({
+  media,
+}: {
+  media: HeroMediaConfig | HeroMediaConfig[];
+}) {
+  const items = Array.isArray(media) ? media : [media];
+  const overlap = items[0]?.placement === "overlap";
+  const [active, setActive] = useState(0);
 
-  const inner =
-    media.type === "video" ? (
-      <video
-        className="block w-full"
-        src={withBasePath(media.src)}
-        poster={media.poster ? withBasePath(media.poster) : undefined}
-        autoPlay
-        loop
-        muted
-        playsInline
-        aria-label={media.alt}
-      />
-    ) : (
-      // Plain <img>: the static export has no next/image optimizer.
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        className="block w-full"
-        src={withBasePath(media.src)}
-        alt={media.alt ?? ""}
-      />
+  useEffect(() => {
+    if (items.length <= 1) return;
+    const id = setInterval(
+      () => setActive((n) => (n + 1) % items.length),
+      INTERVAL_MS,
     );
+    return () => clearInterval(id);
+  }, [items.length]);
+
+  // item[0] stays in flow (sets the container height); rest are absolute overlays
+  const stack = (
+    <div className="relative">
+      {items.map((item, i) => (
+        <div
+          key={i}
+          className="transition-opacity duration-700 ease-in-out"
+          style={
+            i === 0
+              ? { opacity: active === 0 ? 1 : 0 }
+              : { position: "absolute", inset: 0, opacity: active === i ? 1 : 0 }
+          }
+        >
+          <MediaItem media={item} />
+        </div>
+      ))}
+    </div>
+  );
 
   if (overlap) {
     return (
       <div className="relative min-w-0 lg:-ml-[14%] lg:w-[130%]">
-        {/* soft glow for depth */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-6 -z-10 bg-accent-soft/40 blur-3xl"
@@ -52,7 +82,7 @@ export function HeroMedia({ media }: { media: HeroMediaConfig }) {
           className="overflow-hidden"
           style={{ maskImage: FEATHER, WebkitMaskImage: FEATHER }}
         >
-          {inner}
+          {stack}
         </div>
       </div>
     );
@@ -65,8 +95,24 @@ export function HeroMedia({ media }: { media: HeroMediaConfig }) {
         className="pointer-events-none absolute -inset-x-6 -bottom-6 top-6 -z-10 rounded-[2.5rem] bg-accent-soft/50 blur-3xl"
       />
       <div className="overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_30px_80px_-32px_rgba(43,41,37,0.30)]">
-        {inner}
+        {stack}
       </div>
+      {items.length > 1 && (
+        <div className="mt-3 flex justify-center gap-1.5">
+          {items.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === active
+                  ? "w-5 bg-accent"
+                  : "w-1.5 bg-ink/20 hover:bg-ink/40"
+              }`}
+              aria-label={`Slide ${i + 1}`}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

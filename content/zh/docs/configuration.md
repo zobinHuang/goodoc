@@ -86,16 +86,26 @@ en: {
 },
 ```
 
-- **`hero.media`** 是可选的 —— 在 hero 区域展示图片或视频。把文件放进
-  `public/`，把 `src` 指过去。用 `placement` 控制排版方式：
-  - `"below"`（默认）—— 在 hero 文字下方以优雅浮动卡片呈现。
-  - `"overlap"` —— 与文字处于同一高度带，向一侧错开，边缘羽化消隐，作为
-    环境背景衬托，不与文字产生视觉冲突。
+- **`hero.media`** 是可选的 —— 在 hero 区域展示图片或视频。可传单个对象，
+  也可传**数组**；传数组时会每四秒自动淡入淡出切换。把文件放进 `public/`，
+  把 `src` 指过去。
+
+  `placement`（取第一项的值）控制排版方式：
+  - `"below"`（默认）—— 在 hero 文字下方以优雅浮动卡片呈现；多张幻灯片时
+    卡片下方会显示圆点导航。
+  - `"overlap"` —— 与文字处于同一高度带，向一侧错开并羽化消隐，静默自动
+    轮播（无可见控件，作为环境背景）。
 
   ```ts
+  // 单个
   media: { type: "image", src: "/hero.png", alt: "…", placement: "overlap" }
-  // 或视频：
-  media: { type: "video", src: "/hero.mp4", poster: "/hero.png" }
+
+  // 数组 —— 交叉淡入淡出轮播
+  media: [
+    { type: "image", src: "/hero-1.png", alt: "功能 A", placement: "below" },
+    { type: "image", src: "/hero-2.png", alt: "功能 B" },
+    { type: "video", src: "/demo.mp4",  poster: "/demo-poster.png" },
+  ]
   ```
 
   视频以静音循环的环境画面播放。省略 `media` 即不显示。

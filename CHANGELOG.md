@@ -6,6 +6,10 @@ with `npm run upgrade -- --ref vX.Y.Z`. See [UPGRADING.md](./UPGRADING.md).
 ## Unreleased
 
 ### Added
+- **Hero media carousel** — `hero.media` now accepts an array of items
+  (`HeroMedia[]`). Multiple images/videos crossfade every 4 s. "below" placement
+  shows dot indicators below the card; "overlap" placement auto-advances silently.
+  Single-item configs continue to work unchanged.
 - **Hero media overlap placement** — `hero.media.placement: "overlap"` puts the
   showcase image/video in the same height band as the text, shifted horizontally
   with a radial-gradient feather mask so it dissolves into the background without

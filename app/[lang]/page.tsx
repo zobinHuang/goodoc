@@ -35,7 +35,8 @@ export default async function HomePage({
   const dict = getDictionary(lang);
   const { hero, features, quickstart } = content;
   const recentPosts = getAllBlogPosts(lang).slice(0, 3);
-  const overlapMedia = hero.media?.placement === "overlap";
+  const firstMedia = Array.isArray(hero.media) ? hero.media[0] : hero.media;
+  const overlapMedia = firstMedia?.placement === "overlap";
 
   return (
     <SiteShell lang={lang}>

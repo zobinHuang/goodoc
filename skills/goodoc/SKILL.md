@@ -154,21 +154,29 @@ locales: {
 ```
 
 Add a feature illustration by dropping an SVG/PNG in `public/features/` and
-referencing it as `image`. `hero.media` (optional) shows an image or video alongside the hero text. Add
-`placement` to control layout:
+referencing it as `image`. `hero.media` (optional) shows an image or video alongside the hero text. Pass
+a single item **or an array** — arrays crossfade automatically every 4 s.
 
-- `"below"` (default) — an elegant floating card beneath the text.
-- `"overlap"` — same height band as the text: media is shifted to the side with
-  a radial-gradient feather mask that dissolves its left edge toward the text,
-  so both elements coexist without visual conflict.
+`placement` (read from the first item) controls layout:
+
+- `"below"` (default) — elegant floating card beneath the text; dot indicators
+  appear below the card when there are multiple slides.
+- `"overlap"` — same height band as the text, shifted to the side with a
+  radial-gradient feather mask; silent auto-advance (no visible controls).
 
 ```ts
+// single item
 media: { type: "image", src: "/hero.png", alt: "…", placement: "overlap" }
-// or video:
-media: { type: "video", src: "/hero.mp4", poster: "/hero.png", placement: "below" }
+
+// crossfade carousel
+media: [
+  { type: "image", src: "/hero-1.png", alt: "Step 1", placement: "below" },
+  { type: "image", src: "/hero-2.png", alt: "Step 2" },
+  { type: "video", src: "/demo.mp4",   poster: "/demo-poster.png" },
+]
 ```
 
-Put assets in `public/` (e.g. `/hero.png`). Videos play as muted, looping ambient clips.
+Put assets in `public/`. Videos play as muted, looping ambient clips.
 
 ## Task: change the theme (colors / fonts)
 
