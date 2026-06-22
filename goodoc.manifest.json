@@ -22,6 +22,9 @@
     "eslint.config.mjs",
     ".github/workflows",
     "dev-docs",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "GEMINI.md",
     ".claude/skills/goodoc",
     "UPGRADING.md",
     "goodoc.manifest.json"

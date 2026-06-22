@@ -26,8 +26,9 @@
 - **渲染**：`unified` 管线（remark/rehype）+ Shiki 高亮，输出 HTML 字符串。
 - **双视图**：同一份渲染结果，套不同外壳 —— humanize（给人）/ agent（给机器）。
 - **升级**：`npm run upgrade` 按 `goodoc.manifest.json` 拉取上游框架更新，不动用户内容。
-- **Agent skill**：`.claude/skills/goodoc/SKILL.md` 指导 code agent 如何基于本模板写
-  文档/博客、配置落地页与主题、管理 i18n、构建与部署、升级（framework-owned，随模板分发）。
+- **Agent 指南**：`AGENTS.md` 是工具无关的单一来源，指导 code agent（Codex/Claude/Gemini）
+  基于本模板写文档/博客、配置落地页与主题、管理 i18n、构建与部署、升级；`CLAUDE.md`、
+  `GEMINI.md` 与 `.claude/skills/goodoc/SKILL.md` 均指向它（framework-owned，随模板分发）。
 
 ## 本地开发
 
