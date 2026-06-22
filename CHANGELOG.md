@@ -6,6 +6,10 @@ with `npm run upgrade -- --ref vX.Y.Z`. See [UPGRADING.md](./UPGRADING.md).
 ## Unreleased
 
 ### Added
+- **Agent skill** at `.claude/skills/goodoc/SKILL.md` — instructs a code agent
+  how to author docs/blog, configure the landing page/theme, manage i18n, build,
+  deploy, and upgrade. Framework-owned, so it travels with the template and
+  updates via `npm run upgrade`.
 - **i18n** with locale-prefixed URLs (`/en/…`, `/zh/…`), English default.
   Locales live in `lib/i18n.ts`, UI strings in `lib/dictionaries.ts`, and
   per-locale content under `content/<locale>/`. Missing translations fall back
