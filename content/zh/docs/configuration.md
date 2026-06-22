@@ -86,11 +86,19 @@ en: {
 },
 ```
 
-- **`hero.media`** 是可选的 —— 在 hero 文字下方以优雅卡片形式展示的图片或视频。
-  把文件放进 `public/`，把 `src` 指过去：
-  `{ type: "image", src: "/hero.png", alt: "…" }` 或
-  `{ type: "video", src: "/hero.mp4", poster: "/hero.png" }`（视频以静音循环的
-  环境画面播放）。省略 `media` 即不显示。
+- **`hero.media`** 是可选的 —— 在 hero 区域展示图片或视频。把文件放进
+  `public/`，把 `src` 指过去。用 `placement` 控制排版方式：
+  - `"below"`（默认）—— 在 hero 文字下方以优雅浮动卡片呈现。
+  - `"overlap"` —— 与文字处于同一高度带，向一侧错开，边缘羽化消隐，作为
+    环境背景衬托，不与文字产生视觉冲突。
+
+  ```ts
+  media: { type: "image", src: "/hero.png", alt: "…", placement: "overlap" }
+  // 或视频：
+  media: { type: "video", src: "/hero.mp4", poster: "/hero.png" }
+  ```
+
+  视频以静音循环的环境画面播放。省略 `media` 即不显示。
 - **`features[].image`** 是可选的 —— 在 `public/` 下提供一张 SVG/PNG
   来给卡片配图，或者省略它只用文字。
 - **`quickstart`** 驱动落地页的安装区块：一个显示 `command` 的终端，加上带编号的

@@ -89,11 +89,21 @@ en: {
 },
 ```
 
-- **`hero.media`** is optional — an image or video shown as an elegant card
-  below the hero text. Put the file in `public/` and point `src` at it:
-  `{ type: "image", src: "/hero.png", alt: "…" }` or
-  `{ type: "video", src: "/hero.mp4", poster: "/hero.png" }` (videos play as a
-  muted, looping ambient clip). Omit `media` to hide it.
+- **`hero.media`** is optional — an image or video shown alongside the hero
+  text. Put the file in `public/` and point `src` at it. The `placement` field
+  controls how it appears:
+  - `"below"` (default) — an elegant floating card beneath the hero text.
+  - `"overlap"` — sits in the same height band as the text, shifted to the side
+    with feathered edges so it reads as an ambient backdrop rather than
+    competing with the words.
+
+  ```ts
+  media: { type: "image", src: "/hero.png", alt: "…", placement: "overlap" }
+  // or video:
+  media: { type: "video", src: "/hero.mp4", poster: "/hero.png" }
+  ```
+
+  Videos play as a muted, looping ambient clip. Omit `media` to hide it.
 - **`features[].image`** is optional — provide an SVG/PNG under `public/` to
   illustrate a card, or omit it for text only.
 - **`quickstart`** powers the landing page's install section: a terminal showing

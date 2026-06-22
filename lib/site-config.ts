@@ -45,7 +45,7 @@ export interface Quickstart {
   note?: string;
 }
 
-/** Optional showcase media displayed below the hero text. */
+/** Optional showcase media displayed in the hero. */
 export interface HeroMedia {
   type: "image" | "video";
   /** Path under public/, e.g. "/hero.png" or "/hero.mp4". */
@@ -53,6 +53,12 @@ export interface HeroMedia {
   /** Image alt text, or a poster frame for a video. */
   alt?: string;
   poster?: string;
+  /**
+   * "below"  — an elegant card beneath the hero text (default).
+   * "overlap" — same band as the text: feathered edges and shifted to the side
+   *   so it sits behind/beside the words without competing with them.
+   */
+  placement?: "below" | "overlap";
 }
 
 export interface LocaleContent {
@@ -117,7 +123,12 @@ export const siteConfig: SiteConfig = {
         secondaryCta: { label: "Visit the blog", href: "/blog/" },
         // Image or video showcase below the hero text. Drop yours in public/
         // and point here, or remove `media` to hide it.
-        media: { type: "image", src: "/hero-preview.svg", alt: "goodoc preview" },
+        media: {
+          type: "image",
+          src: "/hero-preview.svg",
+          alt: "goodoc preview",
+          placement: "overlap",
+        },
       },
       features: [
         {
@@ -180,7 +191,12 @@ export const siteConfig: SiteConfig = {
           "落地页宣传、Markdown 文档、博客，三位一体。每篇文档都有 humanize 与 agent 两种视图——既为读者，也为机器。",
         primaryCta: { label: "阅读文档", href: "/docs/" },
         secondaryCta: { label: "看看博客", href: "/blog/" },
-        media: { type: "image", src: "/hero-preview.svg", alt: "goodoc 预览" },
+        media: {
+          type: "image",
+          src: "/hero-preview.svg",
+          alt: "goodoc 预览",
+          placement: "overlap",
+        },
       },
       features: [
         {

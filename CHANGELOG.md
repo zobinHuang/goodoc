@@ -6,6 +6,11 @@ with `npm run upgrade -- --ref vX.Y.Z`. See [UPGRADING.md](./UPGRADING.md).
 ## Unreleased
 
 ### Added
+- **Hero media overlap placement** — `hero.media.placement: "overlap"` puts the
+  showcase image/video in the same height band as the text, shifted horizontally
+  with a radial-gradient feather mask so it dissolves into the background without
+  competing with the words. The existing `"below"` placement (floating card
+  beneath the text) remains the default.
 - **Hero media** — an optional image or video shown as an elegant, low-contrast
   card below the hero text (`siteConfig.locales[lang].hero.media`). Videos play
   as a muted, looping ambient clip. Omit `media` to hide it.

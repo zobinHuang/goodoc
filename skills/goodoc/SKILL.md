@@ -154,9 +154,21 @@ locales: {
 ```
 
 Add a feature illustration by dropping an SVG/PNG in `public/features/` and
-referencing it as `image`. `hero.media` (optional) shows an image or video as an
-elegant card below the hero text — `{ type: "image", src: "/hero.png", alt }` or
-`{ type: "video", src: "/hero.mp4", poster: "/hero.png" }` (muted, looping).
+referencing it as `image`. `hero.media` (optional) shows an image or video alongside the hero text. Add
+`placement` to control layout:
+
+- `"below"` (default) — an elegant floating card beneath the text.
+- `"overlap"` — same height band as the text: media is shifted to the side with
+  a radial-gradient feather mask that dissolves its left edge toward the text,
+  so both elements coexist without visual conflict.
+
+```ts
+media: { type: "image", src: "/hero.png", alt: "…", placement: "overlap" }
+// or video:
+media: { type: "video", src: "/hero.mp4", poster: "/hero.png", placement: "below" }
+```
+
+Put assets in `public/` (e.g. `/hero.png`). Videos play as muted, looping ambient clips.
 
 ## Task: change the theme (colors / fonts)
 

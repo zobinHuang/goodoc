@@ -35,6 +35,7 @@ export default async function HomePage({
   const dict = getDictionary(lang);
   const { hero, features, quickstart } = content;
   const recentPosts = getAllBlogPosts(lang).slice(0, 3);
+  const overlapMedia = hero.media?.placement === "overlap";
 
   return (
     <SiteShell lang={lang}>
@@ -49,36 +50,66 @@ export default async function HomePage({
           }}
         />
         <div
-          className={`mx-auto max-w-4xl px-5 pt-20 text-center sm:px-8 sm:pt-28 ${
-            hero.media ? "" : "pb-16"
+          className={`relative mx-auto px-5 sm:px-8 ${
+            overlapMedia ? "max-w-7xl" : "max-w-4xl"
           }`}
         >
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
-            {hero.eyebrow}
-          </p>
-          <h1 className="mx-auto mt-6 max-w-3xl font-serif text-4xl font-bold leading-tight tracking-tight text-ink sm:text-6xl">
-            {hero.headline}
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft">
-            {hero.subhead}
-          </p>
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              href={localePath(lang, hero.primaryCta.href)}
-              className="rounded-full bg-accent px-6 py-3 text-sm font-bold text-paper shadow-paper transition-colors hover:bg-accent-strong"
+          <div
+            className={
+              overlapMedia
+                ? "grid items-center gap-8 py-16 sm:py-20 lg:grid-cols-2 lg:gap-6 lg:py-24"
+                : `pt-20 text-center sm:pt-28 ${hero.media ? "" : "pb-16"}`
+            }
+          >
+            <div
+              className={`relative z-10 min-w-0 ${
+                overlapMedia ? "text-center lg:text-left" : "text-center"
+              }`}
             >
-              {hero.primaryCta.label}
-            </Link>
-            <Link
-              href={localePath(lang, hero.secondaryCta.href)}
-              className="rounded-full border border-line bg-surface px-6 py-3 text-sm font-bold text-ink-soft transition-colors hover:border-accent hover:text-accent"
-            >
-              {hero.secondaryCta.label}
-            </Link>
+              <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
+                {hero.eyebrow}
+              </p>
+              <h1
+                className={`mt-6 font-serif text-4xl font-bold leading-tight tracking-tight text-ink ${
+                  overlapMedia
+                    ? "mx-auto max-w-xl sm:text-5xl lg:mx-0"
+                    : "mx-auto max-w-3xl sm:text-6xl"
+                }`}
+              >
+                {hero.headline}
+              </h1>
+              <p
+                className={`mt-6 text-lg leading-relaxed text-ink-soft ${
+                  overlapMedia ? "mx-auto max-w-md lg:mx-0" : "mx-auto max-w-2xl"
+                }`}
+              >
+                {hero.subhead}
+              </p>
+              <div
+                className={`mt-9 flex flex-wrap items-center gap-3 ${
+                  overlapMedia ? "justify-center lg:justify-start" : "justify-center"
+                }`}
+              >
+                <Link
+                  href={localePath(lang, hero.primaryCta.href)}
+                  className="rounded-full bg-accent px-6 py-3 text-sm font-bold text-paper shadow-paper transition-colors hover:bg-accent-strong"
+                >
+                  {hero.primaryCta.label}
+                </Link>
+                <Link
+                  href={localePath(lang, hero.secondaryCta.href)}
+                  className="rounded-full border border-line bg-surface px-6 py-3 text-sm font-bold text-ink-soft transition-colors hover:border-accent hover:text-accent"
+                >
+                  {hero.secondaryCta.label}
+                </Link>
+              </div>
+            </div>
+
+            {overlapMedia && hero.media && <HeroMedia media={hero.media} />}
           </div>
         </div>
 
-        {hero.media && (
+        {!overlapMedia && hero.media && (
           <div className="px-5 pb-16 pt-16 sm:px-8">
             <HeroMedia media={hero.media} />
           </div>
