@@ -27,8 +27,12 @@ export interface Brand {
 export interface FeatureCard {
   title: string;
   body: string;
-  /** Optional illustration, e.g. "/features/landing.svg" (under public/). */
+  /** Optional illustration under public/, e.g. "/features/landing.svg". */
   image?: string;
+  /** Optional video under public/, e.g. "/features/demo.mp4". Takes priority over image. */
+  video?: string;
+  /** Poster frame shown before the video plays, e.g. "/features/demo-poster.png". */
+  poster?: string;
 }
 
 export interface QuickstartStep {

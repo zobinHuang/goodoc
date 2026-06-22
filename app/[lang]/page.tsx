@@ -122,7 +122,17 @@ export default async function HomePage({
         <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
           {features.map((feature) => (
             <div key={feature.title} className="flex flex-col bg-surface">
-              {feature.image && (
+              {feature.video ? (
+                <video
+                  src={withBasePath(feature.video)}
+                  poster={feature.poster ? withBasePath(feature.poster) : undefined}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-44 w-full border-b border-line object-cover"
+                />
+              ) : feature.image ? (
                 // Plain <img>: the static export has no next/image optimizer.
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
@@ -130,7 +140,7 @@ export default async function HomePage({
                   alt=""
                   className="h-44 w-full border-b border-line object-cover"
                 />
-              )}
+              ) : null}
               <div className="p-7">
                 <h3 className="font-serif text-xl font-bold text-ink">
                   {feature.title}
