@@ -12,6 +12,18 @@ export interface NavLink {
   href: string;
 }
 
+/** How the brand is shown in the header/footer. */
+export type BrandMode = "logo-and-name" | "logo-only" | "name-only";
+
+export interface Brand {
+  /** How to render the brand. Falls back to the name if a logo is missing. */
+  mode: BrandMode;
+  /** Logo image under public/, e.g. "/logo.svg". Required for the logo modes. */
+  logo?: string;
+  /** Alt text for the logo; defaults to the site name. */
+  logoAlt?: string;
+}
+
 export interface FeatureCard {
   title: string;
   body: string;
@@ -53,6 +65,8 @@ export interface LocaleContent {
 export interface SiteConfig {
   /** Brand wordmark shown in the header/footer. */
   name: string;
+  /** Logo + name display in the header/footer. */
+  brand: Brand;
   /** Upstream repository (used by the footer "Powered by" link and upgrades). */
   repo: string;
   social: NavLink[];
@@ -67,6 +81,9 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   name: "goodoc",
+  // Show logo + name. Use "logo-only" or "name-only" to taste; set `logo` to
+  // your own image under public/ (or drop `logo` to fall back to the name).
+  brand: { mode: "logo-and-name", logo: "/goodoc-mark.svg" },
   repo: "https://github.com/zobinHuang/goodoc",
   social: [{ label: "GitHub", href: "https://github.com/zobinHuang/goodoc" }],
 

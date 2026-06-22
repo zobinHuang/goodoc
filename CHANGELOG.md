@@ -5,6 +5,12 @@ with `npm run upgrade -- --ref vX.Y.Z`. See [UPGRADING.md](./UPGRADING.md).
 
 ## Unreleased
 
+### Added
+- **Logo support** for the brand in the header/footer, configured via
+  `siteConfig.brand`: `mode` of `logo-and-name` (default), `logo-only`, or
+  `name-only`, with a `logo` image under `public/`. Falls back to the name if a
+  logo mode has no logo.
+
 ### Changed
 - Root `/` now forwards to the default locale via a no-JS
   `<meta http-equiv="refresh">` (instant, works without JavaScript), with the

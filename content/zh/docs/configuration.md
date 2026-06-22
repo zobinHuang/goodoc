@@ -15,6 +15,7 @@ order: 1
 ```ts
 export const siteConfig: SiteConfig = {
   name: "goodoc",                         // 页眉/页脚中的标志文字
+  brand: { mode: "logo-and-name", logo: "/goodoc-mark.svg" },
   repo: "https://github.com/zobinHuang/goodoc",
   social: [{ label: "GitHub", href: "https://github.com/zobinHuang/goodoc" }],
 
@@ -28,6 +29,20 @@ export const siteConfig: SiteConfig = {
 ```
 
 页脚会自动渲染那一行署名信息 —— 把 `projectName` 和 `duration` 改成你自己的即可。
+
+### Logo
+
+`brand` 控制页眉/页脚的标志展示。把 logo 放进 `public/`（如 `/logo.svg`），再选 `mode`：
+
+- `"logo-and-name"` —— logo + 名称并排（默认）。
+- `"logo-only"` —— 只显示 logo。
+- `"name-only"` —— 只显示名称（无需 logo）。
+
+```ts
+brand: { mode: "logo-only", logo: "/logo.svg", logoAlt: "Acme" }
+```
+
+若选了 logo 模式但没设 `logo`，会自动回退到显示名称。
 
 ## 各语言文案
 

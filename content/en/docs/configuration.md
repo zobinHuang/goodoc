@@ -16,6 +16,7 @@ the top level; anything that needs translating lives under `locales`.
 ```ts
 export const siteConfig: SiteConfig = {
   name: "goodoc",                         // wordmark in header/footer
+  brand: { mode: "logo-and-name", logo: "/goodoc-mark.svg" },
   repo: "https://github.com/zobinHuang/goodoc",
   social: [{ label: "GitHub", href: "https://github.com/zobinHuang/goodoc" }],
 
@@ -30,6 +31,21 @@ export const siteConfig: SiteConfig = {
 
 The footer renders that attribution line automatically — change `projectName`
 and `duration` to yours.
+
+### Logo
+
+`brand` controls the lockup shown in the header and footer. Drop a logo in
+`public/` (e.g. `/logo.svg`) and pick a `mode`:
+
+- `"logo-and-name"` — logo next to the name (the default).
+- `"logo-only"` — logo by itself.
+- `"name-only"` — just the name (no logo needed).
+
+```ts
+brand: { mode: "logo-only", logo: "/logo.svg", logoAlt: "Acme" }
+```
+
+If a logo mode is set but `logo` is missing, it falls back to the name.
 
 ## Per-locale copy
 
