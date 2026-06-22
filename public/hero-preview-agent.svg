@@ -1,0 +1,77 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="goodoc agent view preview">
+  <!-- browser window -->
+  <rect x="40" y="36" width="1120" height="628" rx="16" fill="#ffffff" stroke="#e7e1d4" stroke-width="2"/>
+  <!-- title bar -->
+  <path d="M40 52 a16 16 0 0 1 16-16 h1088 a16 16 0 0 1 16 16 v32 h-1120 z" fill="#faf7f1"/>
+  <line x1="40" y1="84" x2="1160" y2="84" stroke="#e7e1d4" stroke-width="2"/>
+  <circle cx="74" cy="60" r="6" fill="#e3cabf"/>
+  <circle cx="96" cy="60" r="6" fill="#ece6da"/>
+  <circle cx="118" cy="60" r="6" fill="#ece6da"/>
+  <rect x="320" y="48" width="560" height="24" rx="12" fill="#f4f0e7"/>
+  <rect x="436" y="57" width="170" height="6" rx="3" fill="#cfc7b8"/>
+
+  <!-- sidebar -->
+  <rect x="72" y="120" width="14" height="8" rx="4" fill="#a65a3f" opacity="0.8"/>
+  <rect x="96" y="120" width="120" height="8" rx="4" fill="#b8b0a1"/>
+  <g fill="#e3ddcf">
+    <rect x="96" y="150" width="150" height="8" rx="4"/>
+    <rect x="96" y="206" width="150" height="8" rx="4"/>
+    <rect x="96" y="234" width="120" height="8" rx="4"/>
+  </g>
+  <rect x="84" y="174" width="3" height="14" rx="1.5" fill="#a65a3f"/>
+  <rect x="96" y="176" width="140" height="8" rx="4" fill="#a65a3f"/>
+
+  <!-- view toggle tabs -->
+  <!-- humanize tab (inactive) -->
+  <rect x="336" y="116" width="106" height="28" rx="7" fill="#f4f0e7"/>
+  <rect x="358" y="127" width="62" height="6" rx="3" fill="#cfc7b8"/>
+  <!-- agent tab (active) -->
+  <rect x="452" y="116" width="86" height="28" rx="7" fill="#2b2925"/>
+  <rect x="472" y="127" width="46" height="6" rx="3" fill="#ffffff" opacity="0.9"/>
+
+  <!-- agent view content panel -->
+  <rect x="336" y="162" width="800" height="490" rx="12" fill="#f6f2ea" stroke="#e7e1d4" stroke-width="1.5"/>
+
+  <!-- simulated HTML/semantic output -->
+  <!-- line: <article> -->
+  <rect x="360" y="192" width="46" height="7" rx="3.5" fill="#a65a3f" opacity="0.55"/>
+  <!-- line: <h1>headline</h1> -->
+  <rect x="384" y="220" width="34" height="7" rx="3.5" fill="#a65a3f" opacity="0.75"/>
+  <rect x="426" y="220" width="200" height="7" rx="3.5" fill="#2b2925" opacity="0.75"/>
+  <rect x="634" y="220" width="38" height="7" rx="3.5" fill="#a65a3f" opacity="0.55"/>
+  <!-- line: <p> text </p> -->
+  <rect x="384" y="250" width="22" height="7" rx="3.5" fill="#a65a3f" opacity="0.55"/>
+  <rect x="414" y="250" width="420" height="7" rx="3.5" fill="#2b2925" opacity="0.45"/>
+  <rect x="384" y="270" width="400" height="7" rx="3.5" fill="#2b2925" opacity="0.45"/>
+  <rect x="384" y="290" width="340" height="7" rx="3.5" fill="#2b2925" opacity="0.45"/>
+  <rect x="728" y="290" width="24" height="7" rx="3.5" fill="#a65a3f" opacity="0.55"/>
+  <!-- blank line -->
+  <!-- line: <h2>...</h2> -->
+  <rect x="384" y="322" width="30" height="7" rx="3.5" fill="#a65a3f" opacity="0.75"/>
+  <rect x="422" y="322" width="140" height="7" rx="3.5" fill="#2b2925" opacity="0.7"/>
+  <rect x="570" y="322" width="34" height="7" rx="3.5" fill="#a65a3f" opacity="0.55"/>
+  <!-- <pre><code> block -->
+  <rect x="384" y="352" width="33" height="7" rx="3.5" fill="#a65a3f" opacity="0.55"/>
+  <rect x="425" y="352" width="40" height="7" rx="3.5" fill="#a65a3f" opacity="0.55"/>
+  <rect x="408" y="374" width="90" height="7" rx="3.5" fill="#a65a3f" opacity="0.7"/>
+  <rect x="506" y="374" width="28" height="7" rx="3.5" fill="#7a7368" opacity="0.7"/>
+  <rect x="542" y="374" width="100" height="7" rx="3.5" fill="#2b2925" opacity="0.7"/>
+  <rect x="408" y="396" width="70" height="7" rx="3.5" fill="#7a7368" opacity="0.55"/>
+  <rect x="486" y="396" width="120" height="7" rx="3.5" fill="#2b2925" opacity="0.6"/>
+  <rect x="408" y="418" width="50" height="7" rx="3.5" fill="#a65a3f" opacity="0.7"/>
+  <rect x="466" y="418" width="80" height="7" rx="3.5" fill="#2b2925" opacity="0.7"/>
+  <rect x="384" y="440" width="48" height="7" rx="3.5" fill="#a65a3f" opacity="0.55"/>
+  <rect x="440" y="440" width="40" height="7" rx="3.5" fill="#a65a3f" opacity="0.55"/>
+  <!-- <p> more text -->
+  <rect x="384" y="472" width="22" height="7" rx="3.5" fill="#a65a3f" opacity="0.55"/>
+  <rect x="414" y="472" width="380" height="7" rx="3.5" fill="#2b2925" opacity="0.4"/>
+  <rect x="384" y="492" width="320" height="7" rx="3.5" fill="#2b2925" opacity="0.4"/>
+  <rect x="702" y="492" width="24" height="7" rx="3.5" fill="#a65a3f" opacity="0.55"/>
+  <!-- </article> -->
+  <rect x="360" y="520" width="52" height="7" rx="3.5" fill="#a65a3f" opacity="0.5"/>
+
+  <!-- "Clean semantic HTML — for machines" label -->
+  <rect x="860" y="192" width="182" height="22" rx="11" fill="#f0ebe1" stroke="#e3ddcf" stroke-width="1"/>
+  <rect x="880" y="199" width="80" height="7" rx="3.5" fill="#a65a3f" opacity="0.6"/>
+  <rect x="968" y="199" width="56" height="7" rx="3.5" fill="#cfc7b8"/>
+</svg>

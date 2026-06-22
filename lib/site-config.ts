@@ -124,14 +124,13 @@ export const siteConfig: SiteConfig = {
           "Landing page, Markdown docs, and a blog — in one. Every document has a humanize and an agent view: for readers, and for machines.",
         primaryCta: { label: "Read the docs", href: "/docs/" },
         secondaryCta: { label: "Visit the blog", href: "/blog/" },
-        // Image or video showcase below the hero text. Drop yours in public/
-        // and point here, or remove `media` to hide it.
-        media: {
-          type: "image",
-          src: "/hero-preview.svg",
-          alt: "goodoc preview",
-          placement: "overlap",
-        },
+        // Array of images/videos — crossfade carousel. Drop yours in public/.
+        // Use a single object (not an array) if you only have one asset.
+        media: [
+          { type: "image", src: "/hero-preview.svg",       alt: "docs view",  placement: "overlap" },
+          { type: "image", src: "/hero-preview-blog.svg",  alt: "blog view" },
+          { type: "image", src: "/hero-preview-agent.svg", alt: "agent view" },
+        ],
       },
       features: [
         {
@@ -194,12 +193,11 @@ export const siteConfig: SiteConfig = {
           "落地页宣传、Markdown 文档、博客，三位一体。每篇文档都有 humanize 与 agent 两种视图——既为读者，也为机器。",
         primaryCta: { label: "阅读文档", href: "/docs/" },
         secondaryCta: { label: "看看博客", href: "/blog/" },
-        media: {
-          type: "image",
-          src: "/hero-preview.svg",
-          alt: "goodoc 预览",
-          placement: "overlap",
-        },
+        media: [
+          { type: "image", src: "/hero-preview.svg",       alt: "文档视图",   placement: "overlap" },
+          { type: "image", src: "/hero-preview-blog.svg",  alt: "博客视图" },
+          { type: "image", src: "/hero-preview-agent.svg", alt: "Agent 视图" },
+        ],
       },
       features: [
         {

@@ -1,0 +1,74 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="goodoc blog view preview">
+  <!-- browser window -->
+  <rect x="40" y="36" width="1120" height="628" rx="16" fill="#ffffff" stroke="#e7e1d4" stroke-width="2"/>
+  <!-- title bar -->
+  <path d="M40 52 a16 16 0 0 1 16-16 h1088 a16 16 0 0 1 16 16 v32 h-1120 z" fill="#faf7f1"/>
+  <line x1="40" y1="84" x2="1160" y2="84" stroke="#e7e1d4" stroke-width="2"/>
+  <circle cx="74" cy="60" r="6" fill="#e3cabf"/>
+  <circle cx="96" cy="60" r="6" fill="#ece6da"/>
+  <circle cx="118" cy="60" r="6" fill="#ece6da"/>
+  <rect x="320" y="48" width="560" height="24" rx="12" fill="#f4f0e7"/>
+  <rect x="436" y="57" width="170" height="6" rx="3" fill="#cfc7b8"/>
+
+  <!-- site nav bar -->
+  <rect x="72" y="94" width="10" height="8" rx="2" fill="#a65a3f" opacity="0.75"/>
+  <rect x="88" y="96" width="52" height="5" rx="2.5" fill="#2b2925" opacity="0.45"/>
+  <!-- Docs link -->
+  <rect x="960" y="96" width="34" height="5" rx="2.5" fill="#cfc7b8"/>
+  <!-- Blog link — active -->
+  <rect x="1014" y="96" width="30" height="5" rx="2.5" fill="#a65a3f"/>
+  <line x1="1014" y1="105" x2="1044" y2="105" stroke="#a65a3f" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="72" y1="113" x2="1128" y2="113" stroke="#e7e1d4" stroke-width="1.5"/>
+
+  <!-- Blog heading -->
+  <rect x="72" y="138" width="100" height="16" rx="5" fill="#2b2925" opacity="0.85"/>
+  <rect x="72" y="166" width="260" height="7" rx="3.5" fill="#cfc7b8"/>
+
+  <!-- 3 blog post cards -->
+  <!-- Card 1 -->
+  <rect x="72" y="198" width="328" height="178" rx="12" fill="#faf7f1" stroke="#e7e1d4" stroke-width="1.5"/>
+  <rect x="96" y="220" width="72" height="6" rx="3" fill="#e3ddcf"/>
+  <rect x="96" y="242" width="270" height="11" rx="4" fill="#2b2925" opacity="0.8"/>
+  <rect x="96" y="262" width="220" height="11" rx="4" fill="#2b2925" opacity="0.8"/>
+  <rect x="96" y="294" width="252" height="7" rx="3.5" fill="#cfc7b8"/>
+  <rect x="96" y="312" width="220" height="7" rx="3.5" fill="#cfc7b8"/>
+  <rect x="96" y="330" width="170" height="7" rx="3.5" fill="#cfc7b8"/>
+  <rect x="96" y="354" width="44" height="7" rx="3.5" fill="#a65a3f" opacity="0.7"/>
+
+  <!-- Card 2 -->
+  <rect x="436" y="198" width="328" height="178" rx="12" fill="#faf7f1" stroke="#e7e1d4" stroke-width="1.5"/>
+  <rect x="460" y="220" width="72" height="6" rx="3" fill="#e3ddcf"/>
+  <rect x="460" y="242" width="270" height="11" rx="4" fill="#2b2925" opacity="0.8"/>
+  <rect x="460" y="294" width="252" height="7" rx="3.5" fill="#cfc7b8"/>
+  <rect x="460" y="312" width="230" height="7" rx="3.5" fill="#cfc7b8"/>
+  <rect x="460" y="330" width="190" height="7" rx="3.5" fill="#cfc7b8"/>
+  <rect x="460" y="354" width="44" height="7" rx="3.5" fill="#a65a3f" opacity="0.7"/>
+
+  <!-- Card 3 -->
+  <rect x="800" y="198" width="328" height="178" rx="12" fill="#faf7f1" stroke="#e7e1d4" stroke-width="1.5"/>
+  <rect x="824" y="220" width="72" height="6" rx="3" fill="#e3ddcf"/>
+  <rect x="824" y="242" width="270" height="11" rx="4" fill="#2b2925" opacity="0.8"/>
+  <rect x="824" y="262" width="200" height="11" rx="4" fill="#2b2925" opacity="0.8"/>
+  <rect x="824" y="294" width="252" height="7" rx="3.5" fill="#cfc7b8"/>
+  <rect x="824" y="312" width="210" height="7" rx="3.5" fill="#cfc7b8"/>
+  <rect x="824" y="330" width="160" height="7" rx="3.5" fill="#cfc7b8"/>
+  <rect x="824" y="354" width="44" height="7" rx="3.5" fill="#a65a3f" opacity="0.7"/>
+
+  <!-- Featured post (expanded) -->
+  <rect x="72" y="406" width="1056" height="224" rx="14" fill="#faf7f1" stroke="#e7e1d4" stroke-width="1.5"/>
+  <!-- tag chip -->
+  <rect x="96" y="428" width="72" height="18" rx="9" fill="#f0ebe1" stroke="#e3ddcf" stroke-width="1"/>
+  <rect x="108" y="434" width="48" height="6" rx="3" fill="#a65a3f" opacity="0.65"/>
+  <!-- post title -->
+  <rect x="96" y="460" width="380" height="15" rx="5" fill="#2b2925" opacity="0.85"/>
+  <!-- excerpt lines -->
+  <rect x="96" y="492" width="860" height="7" rx="3.5" fill="#cfc7b8"/>
+  <rect x="96" y="512" width="800" height="7" rx="3.5" fill="#cfc7b8"/>
+  <rect x="96" y="532" width="720" height="7" rx="3.5" fill="#cfc7b8"/>
+  <!-- read more -->
+  <rect x="96" y="560" width="68" height="7" rx="3.5" fill="#a65a3f" opacity="0.75"/>
+  <line x1="170" y1="563" x2="180" y2="563" stroke="#a65a3f" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
+  <!-- date -->
+  <rect x="982" y="560" width="90" height="7" rx="3.5" fill="#e3ddcf"/>
+  <rect x="1038" y="428" width="80" height="7" rx="3.5" fill="#e3ddcf"/>
+</svg>
