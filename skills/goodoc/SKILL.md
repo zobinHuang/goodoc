@@ -1,10 +1,21 @@
+---
+name: goodoc
+description: >-
+  Guide for building a site on the goodoc template (a literary static-site
+  framework for project home pages, docs, and blogs). Use when adding or editing
+  documentation or blog posts, configuring the landing page / theme / footer,
+  managing i18n locales, running/previewing/building the site, deploying to
+  GitHub Pages, or upgrading the framework from upstream. Triggers: goodoc,
+  content/<locale>/docs, lib/site-config.ts, app/theme.css, humanize/agent
+  views, npm run upgrade.
+---
+
 # goodoc — agent guide
 
-This is the **canonical, tool-agnostic guide** for any code agent (Codex,
-Claude, Gemini, …) working in a goodoc-based site. `CLAUDE.md`, `GEMINI.md`, and
-`.claude/skills/goodoc/SKILL.md` all point here. It is framework-managed —
-`npm run upgrade` keeps it current, so add project-specific notes in your own
-file rather than editing this one.
+This single file is the source of truth for working in a goodoc-based site.
+Manage/distribute it to your agents (Claude, Codex, Gemini, …) with
+`npx skills`. It is framework-managed — `npm run upgrade` keeps it current, so
+put project-specific notes in your own file rather than editing this one.
 
 goodoc is a **static-site framework** (Next.js App Router, `output: "export"`)
 for a project's **landing page + docs + blog**, with a literary light-only
