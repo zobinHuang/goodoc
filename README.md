@@ -1,25 +1,25 @@
 <div align="center">
   <img src="./public/goodoc-mark.svg" alt="goodoc" width="160" />
   <h1>goodoc</h1>
-  <p><em>为人与机器而写的文档框架</em></p>
+  <p><em>A documentation framework for humans and machines</em></p>
+  <p><strong>English</strong> · <a href="./README.zh-CN.md">简体中文</a></p>
 </div>
 
-**goodoc** 是一个偏文艺的静态站点框架，用来承载项目的**主页**、**文档**与**博客**。
-你只需写 Markdown，就能得到一个排版讲究、对人与机器都友好的站点。
+**goodoc** is a literary, static-site framework for hosting a project's
+**home page**, **docs**, and **blog**. Write nothing but Markdown and get a
+site that's beautifully typeset and friendly to both humans and machines.
 
-## 特点
+## Features
 
-- 🏛 **落地页** —— 用一页文艺地宣传项目是什么、能做什么、怎么开始。
-- 📖 **双视图文档** —— 同一份 Markdown，`humanize` 视图像 GitHub README 一样精致渲染，
-  `agent` 视图输出干净的语义化 HTML 供机器阅读。两者位于平行 URL：
-  `/<lang>/docs/humanize/…` 与 `/<lang>/docs/agent/…`。
-- ✍️ **博客** —— 用 Markdown 写随笔与更新，与文档共享同一套渲染。
-- 🌐 **i18n** —— locale 前缀路由（`/en`、`/zh`），默认 English；内容按 `content/<locale>/` 组织。
-- 🎨 **文艺主题** —— 暖纸色、墨色、单一陶土强调色；仅 light theme；PT Sans / PT Serif / PT Mono。
-- 📦 **纯静态** —— 构建为静态站点，一键发布到 GitHub Pages 或任意静态主机。
-- ⬆️ **可升级** —— 以 goodoc 为模板 clone 后，`npm run upgrade` 拉取上游框架更新而不动你的内容。
+- 🏛 **Landing page** — say what your project is, what it does, and how to start, on one literary page.
+- 📖 **Two-view docs** — one Markdown source: the `humanize` view renders like a polished GitHub README, the `agent` view emits clean semantic HTML for machines. They live at parallel URLs: `/<lang>/docs/humanize/…` and `/<lang>/docs/agent/…`.
+- ✍️ **Blog** — write notes and updates in Markdown, sharing the docs' rendering.
+- 🌐 **i18n** — locale-prefixed routes (`/en`, `/zh`), English by default; content organized under `content/<locale>/`.
+- 🎨 **Literary theme** — warm paper, ink, a single terracotta accent; light theme only; PT Sans / PT Serif / PT Mono.
+- 📦 **Fully static** — builds to a static site you can publish to GitHub Pages or any static host.
+- ⬆️ **Upgradable** — after cloning goodoc as a template, `npm run upgrade` pulls upstream framework updates without touching your content.
 
-## 快速开始
+## Quick start
 
 ```bash
 git clone https://github.com/zobinHuang/goodoc.git my-project
@@ -28,44 +28,47 @@ npm install
 npm run dev        # http://localhost:3000
 ```
 
-三步上线：
+Go live in three steps:
 
-1. 编辑 `lib/site-config.ts` —— 改成你的项目名、标语、导航、落地页与各 locale 文案；
-   调色板在 `app/theme.css`。
-2. 把文档丢进 `content/<locale>/docs/`、博客丢进 `content/<locale>/blog/`（带 frontmatter
-   的 Markdown，默认 locale 为 `en`）。
-3. 推送到 GitHub，由内置的 Actions 自动构建并发布到 GitHub Pages
-   （Settings → Pages → Source 选 **GitHub Actions**）。
+1. Edit `lib/site-config.ts` — your project name, tagline, navigation, landing
+   page, and per-locale copy. Tune the palette in `app/theme.css`.
+2. Drop docs into `content/<locale>/docs/` and posts into `content/<locale>/blog/`
+   (Markdown with frontmatter; the default locale is `en`).
+3. Push to GitHub; the bundled Actions workflow builds and publishes to GitHub
+   Pages (set **Settings → Pages → Source** to **GitHub Actions**).
 
-## 升级
+## Upgrade
 
-以 goodoc 为模板 clone 后，拉取上游框架更新而不动你的内容/配置/主题：
+After cloning goodoc as a template, pull upstream framework updates without
+touching your content, config, or theme:
 
 ```bash
 npm run upgrade
 ```
 
-详见 [`UPGRADING.md`](./UPGRADING.md) 与 [`CHANGELOG.md`](./CHANGELOG.md)。
+See [`UPGRADING.md`](./UPGRADING.md) and [`CHANGELOG.md`](./CHANGELOG.md).
 
-## 技术栈
+## Tech stack
 
-Next.js 16（App Router）· React 19 · TypeScript · Tailwind CSS v4 ·
-unified/remark/rehype · Shiki · 静态导出（`output: "export"`）。
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS v4 ·
+unified/remark/rehype · Shiki · static export (`output: "export"`).
 
-## 文档
+## Documentation
 
-- 站点内文档：启动后访问 `/`（自动跳转到 `/en/`），或直接 `/en/docs/`。
-- **框架开发文档**：见 [`dev-docs/`](./dev-docs/)（架构、渲染管线、主题、部署、i18n、升级等）。
+- On-site docs: after starting, visit `/` (redirects to `/en/`), or go straight
+  to `/en/docs/`.
+- **Framework development docs**: see [`dev-docs/`](./dev-docs/) (architecture,
+  rendering pipeline, theming, deployment, i18n, upgrades, and more).
 
-## 部署
+## Deployment
 
 ```bash
-# GitHub 项目站点（位于子路径）
-NEXT_PUBLIC_BASE_PATH=/goodoc npm run build   # 产物在 out/
+# GitHub project site (served under a sub-path)
+NEXT_PUBLIC_BASE_PATH=/goodoc npm run build   # output in out/
 ```
 
-详见 [`dev-docs/05-deployment.md`](./dev-docs/05-deployment.md)。
+See [`dev-docs/05-deployment.md`](./dev-docs/05-deployment.md).
 
 ## License
 
-见 [LICENSE](./LICENSE)。
+See [LICENSE](./LICENSE).
