@@ -58,6 +58,7 @@ en: {
     subhead: "Landing page, Markdown docs, and a blog — in one.",
     primaryCta: { label: "Read the docs", href: "/docs/" },
     secondaryCta: { label: "Visit the blog", href: "/blog/" },
+    media: { type: "image", src: "/hero-preview.svg", alt: "preview" }, // 可选
   },
   features: [
     {
@@ -85,6 +86,11 @@ en: {
 },
 ```
 
+- **`hero.media`** 是可选的 —— 在 hero 文字下方以优雅卡片形式展示的图片或视频。
+  把文件放进 `public/`，把 `src` 指过去：
+  `{ type: "image", src: "/hero.png", alt: "…" }` 或
+  `{ type: "video", src: "/hero.mp4", poster: "/hero.png" }`（视频以静音循环的
+  环境画面播放）。省略 `media` 即不显示。
 - **`features[].image`** 是可选的 —— 在 `public/` 下提供一张 SVG/PNG
   来给卡片配图，或者省略它只用文字。
 - **`quickstart`** 驱动落地页的安装区块：一个显示 `command` 的终端，加上带编号的

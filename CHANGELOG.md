@@ -6,6 +6,9 @@ with `npm run upgrade -- --ref vX.Y.Z`. See [UPGRADING.md](./UPGRADING.md).
 ## Unreleased
 
 ### Added
+- **Hero media** — an optional image or video shown as an elegant, low-contrast
+  card below the hero text (`siteConfig.locales[lang].hero.media`). Videos play
+  as a muted, looping ambient clip. Omit `media` to hide it.
 - **Logo support** for the brand in the header/footer, configured via
   `siteConfig.brand`: `mode` of `logo-and-name` (default), `logo-only`, or
   `name-only`, with a `logo` image under `public/`. Falls back to the name if a

@@ -61,6 +61,7 @@ en: {
     subhead: "Landing page, Markdown docs, and a blog — in one.",
     primaryCta: { label: "Read the docs", href: "/docs/" },
     secondaryCta: { label: "Visit the blog", href: "/blog/" },
+    media: { type: "image", src: "/hero-preview.svg", alt: "preview" }, // optional
   },
   features: [
     {
@@ -88,6 +89,11 @@ en: {
 },
 ```
 
+- **`hero.media`** is optional — an image or video shown as an elegant card
+  below the hero text. Put the file in `public/` and point `src` at it:
+  `{ type: "image", src: "/hero.png", alt: "…" }` or
+  `{ type: "video", src: "/hero.mp4", poster: "/hero.png" }` (videos play as a
+  muted, looping ambient clip). Omit `media` to hide it.
 - **`features[].image`** is optional — provide an SVG/PNG under `public/` to
   illustrate a card, or omit it for text only.
 - **`quickstart`** powers the landing page's install section: a terminal showing

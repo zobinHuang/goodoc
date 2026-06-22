@@ -135,7 +135,8 @@ locales: {
   en: {
     tagline, description,
     hero: { eyebrow, headline, subhead,
-            primaryCta: { label, href }, secondaryCta: { label, href } },
+            primaryCta: { label, href }, secondaryCta: { label, href },
+            media: { type: "image", src: "/hero.png", alt: "…" } },  // optional
     features: [
       { title, body, image: "/features/landing.svg" },  // image optional
     ],
@@ -153,7 +154,9 @@ locales: {
 ```
 
 Add a feature illustration by dropping an SVG/PNG in `public/features/` and
-referencing it as `image`.
+referencing it as `image`. `hero.media` (optional) shows an image or video as an
+elegant card below the hero text — `{ type: "image", src: "/hero.png", alt }` or
+`{ type: "video", src: "/hero.mp4", poster: "/hero.png" }` (muted, looping).
 
 ## Task: change the theme (colors / fonts)
 

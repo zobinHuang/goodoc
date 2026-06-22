@@ -1,0 +1,46 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="goodoc documentation preview">
+  <!-- browser window -->
+  <rect x="40" y="36" width="1120" height="628" rx="16" fill="#ffffff" stroke="#e7e1d4" stroke-width="2"/>
+  <!-- title bar -->
+  <path d="M40 52 a16 16 0 0 1 16 -16 h1088 a16 16 0 0 1 16 16 v32 h-1120 z" fill="#faf7f1"/>
+  <line x1="40" y1="84" x2="1160" y2="84" stroke="#e7e1d4" stroke-width="2"/>
+  <circle cx="74" cy="60" r="6" fill="#e3cabf"/>
+  <circle cx="96" cy="60" r="6" fill="#ece6da"/>
+  <circle cx="118" cy="60" r="6" fill="#ece6da"/>
+  <rect x="320" y="48" width="560" height="24" rx="12" fill="#f4f0e7"/>
+  <rect x="436" y="57" width="170" height="6" rx="3" fill="#cfc7b8"/>
+
+  <!-- sidebar -->
+  <rect x="72" y="120" width="14" height="8" rx="4" fill="#a65a3f" opacity="0.8"/>
+  <rect x="96" y="120" width="120" height="8" rx="4" fill="#b8b0a1"/>
+  <g fill="#e3ddcf"><rect x="96" y="150" width="150" height="8" rx="4"/><rect x="96" y="206" width="150" height="8" rx="4"/><rect x="96" y="234" width="120" height="8" rx="4"/></g>
+  <!-- active item -->
+  <rect x="84" y="174" width="3" height="14" rx="1.5" fill="#a65a3f"/>
+  <rect x="96" y="176" width="140" height="8" rx="4" fill="#a65a3f"/>
+
+  <!-- main column -->
+  <rect x="336" y="124" width="360" height="22" rx="6" fill="#2b2925"/>
+  <rect x="336" y="166" width="470" height="10" rx="5" fill="#cfc7b8"/>
+  <line x1="336" y1="200" x2="904" y2="200" stroke="#eee7d9" stroke-width="2"/>
+  <g fill="#e8e1d2"><rect x="336" y="224" width="568" height="9" rx="4.5"/><rect x="336" y="246" width="540" height="9" rx="4.5"/><rect x="336" y="268" width="500" height="9" rx="4.5"/></g>
+
+  <!-- code block -->
+  <rect x="336" y="304" width="568" height="158" rx="12" fill="#f6f2ea" stroke="#e7e1d4" stroke-width="1.5"/>
+  <g font-family="ui-monospace, monospace" font-size="15">
+    <text x="360" y="338" fill="#a65a3f">const</text>
+    <text x="416" y="338" fill="#4a453d">doc =</text>
+    <text x="476" y="338" fill="#7a7368">await</text>
+    <text x="536" y="338" fill="#2b2925">render(md)</text>
+    <text x="360" y="366" fill="#7a7368">// humanize + agent</text>
+    <text x="360" y="394" fill="#a65a3f">return</text>
+    <text x="424" y="394" fill="#2b2925">doc.html</text>
+    <text x="360" y="430" fill="#7a7368">// one source, two views</text>
+  </g>
+
+  <g fill="#e8e1d2"><rect x="336" y="492" width="520" height="9" rx="4.5"/><rect x="336" y="514" width="470" height="9" rx="4.5"/></g>
+
+  <!-- table of contents -->
+  <rect x="952" y="120" width="96" height="7" rx="3.5" fill="#cfc7b8"/>
+  <g fill="#e3ddcf"><rect x="952" y="150" width="150" height="7" rx="3.5"/><rect x="952" y="174" width="120" height="7" rx="3.5"/><rect x="952" y="222" width="135" height="7" rx="3.5"/></g>
+  <rect x="952" y="198" width="110" height="7" rx="3.5" fill="#a65a3f"/>
+</svg>

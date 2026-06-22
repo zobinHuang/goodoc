@@ -45,6 +45,16 @@ export interface Quickstart {
   note?: string;
 }
 
+/** Optional showcase media displayed below the hero text. */
+export interface HeroMedia {
+  type: "image" | "video";
+  /** Path under public/, e.g. "/hero.png" or "/hero.mp4". */
+  src: string;
+  /** Image alt text, or a poster frame for a video. */
+  alt?: string;
+  poster?: string;
+}
+
 export interface LocaleContent {
   tagline: string;
   description: string;
@@ -54,6 +64,8 @@ export interface LocaleContent {
     subhead: string;
     primaryCta: NavLink;
     secondaryCta: NavLink;
+    /** Optional image/video shown as an elegant card below the hero text. */
+    media?: HeroMedia;
   };
   features: FeatureCard[];
   quickstart: Quickstart;
@@ -103,6 +115,9 @@ export const siteConfig: SiteConfig = {
           "Landing page, Markdown docs, and a blog — in one. Every document has a humanize and an agent view: for readers, and for machines.",
         primaryCta: { label: "Read the docs", href: "/docs/" },
         secondaryCta: { label: "Visit the blog", href: "/blog/" },
+        // Image or video showcase below the hero text. Drop yours in public/
+        // and point here, or remove `media` to hide it.
+        media: { type: "image", src: "/hero-preview.svg", alt: "goodoc preview" },
       },
       features: [
         {
@@ -165,6 +180,7 @@ export const siteConfig: SiteConfig = {
           "落地页宣传、Markdown 文档、博客，三位一体。每篇文档都有 humanize 与 agent 两种视图——既为读者，也为机器。",
         primaryCta: { label: "阅读文档", href: "/docs/" },
         secondaryCta: { label: "看看博客", href: "/blog/" },
+        media: { type: "image", src: "/hero-preview.svg", alt: "goodoc 预览" },
       },
       features: [
         {

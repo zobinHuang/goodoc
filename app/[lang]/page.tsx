@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Fragment } from "react";
 import { SiteShell } from "@/components/site-shell";
+import { HeroMedia } from "@/components/hero-media";
 import { getSiteContent } from "@/lib/site-config";
 import { getAllBlogPosts } from "@/lib/content";
 import { getDictionary } from "@/lib/dictionaries";
@@ -47,7 +48,11 @@ export default async function HomePage({
               "radial-gradient(60% 50% at 50% 0%, var(--color-accent-soft) 0%, transparent 70%)",
           }}
         />
-        <div className="mx-auto max-w-4xl px-5 pb-16 pt-20 text-center sm:px-8 sm:pt-28">
+        <div
+          className={`mx-auto max-w-4xl px-5 pt-20 text-center sm:px-8 sm:pt-28 ${
+            hero.media ? "" : "pb-16"
+          }`}
+        >
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
             {hero.eyebrow}
           </p>
@@ -72,6 +77,12 @@ export default async function HomePage({
             </Link>
           </div>
         </div>
+
+        {hero.media && (
+          <div className="px-5 pb-16 pt-16 sm:px-8">
+            <HeroMedia media={hero.media} />
+          </div>
+        )}
       </section>
 
       {/* Features (with optional illustration) */}
