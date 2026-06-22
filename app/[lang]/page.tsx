@@ -119,9 +119,9 @@ export default async function HomePage({
 
       {/* Features (with optional illustration) */}
       <section className="mx-auto max-w-6xl px-5 py-12 sm:px-8">
-        <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2">
           {features.map((feature) => (
-            <div key={feature.title} className="flex flex-col bg-surface">
+            <div key={feature.title} className="flex flex-col overflow-hidden rounded-2xl border border-line bg-surface">
               {feature.video ? (
                 <video
                   src={withBasePath(feature.video)}
