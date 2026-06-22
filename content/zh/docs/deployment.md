@@ -35,20 +35,14 @@ NEXT_PUBLIC_BASE_PATH=/goodoc npm run build
 仓库自带 `.github/workflows/deploy.yml`；推送到 `main` 分支即可自动构建并发布。
 你只需进入仓库设置，把 **Settings → Pages → Source** 设为 **GitHub Actions**。
 
-工作流大致如下：
+工作流会**自动判断 base path**：
 
-```yaml
-- run: npm ci
-- run: npm run build
-  env:
-    NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
-- uses: actions/upload-pages-artifact@v3
-  with:
-    path: ./out
-```
+- **项目页面**（`<user>.github.io/<repo>/`）→ base path 为 `/<repo>`。
+- **用户/组织页面**（仓库名为 `<name>.github.io`）→ 部署在根路径，base path 留空。
+- **自定义域名**（`public/` 或仓库根有 `CNAME` 文件）→ 根路径，留空。
 
-> 对于自定义域名或用户页面（`<username>.github.io`），它们部署在根路径，无需 base path
-> —— 把 `NEXT_PUBLIC_BASE_PATH` 留空即可。
+所以通常你什么都不用设。手动构建时照此对应：用户页面/自定义域名留空
+`NEXT_PUBLIC_BASE_PATH`，项目页面设为 `/<repo>`。
 
 ## 其他托管平台
 

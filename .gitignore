@@ -42,3 +42,6 @@ next-env.d.ts
 
 # goodoc upgrade artifacts
 *.upstream
+
+# local scratch
+/tmp/

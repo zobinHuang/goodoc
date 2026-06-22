@@ -36,20 +36,16 @@ your shell can never 404 your dev site.
 The repo ships with `.github/workflows/deploy.yml`; pushing to the `main` branch builds and publishes automatically.
 You only need to go to the repo settings and set **Settings → Pages → Source** to **GitHub Actions**.
 
-The workflow looks roughly like this:
+The workflow **auto-detects the base path**:
 
-```yaml
-- run: npm ci
-- run: npm run build
-  env:
-    NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
-- uses: actions/upload-pages-artifact@v3
-  with:
-    path: ./out
-```
+- **Project page** (`<user>.github.io/<repo>/`) → base path `/<repo>`.
+- **User/org page** (the repo is named `<name>.github.io`) → served at the root,
+  so the base path is empty.
+- **Custom domain** (a `CNAME` file in `public/` or the repo root) → root, empty.
 
-> For a custom domain or a user page (`<username>.github.io`), which deploy at the root path, no
-> base path is needed—just leave `NEXT_PUBLIC_BASE_PATH` empty.
+So you usually don't set anything. For a manual build, match it yourself: leave
+`NEXT_PUBLIC_BASE_PATH` empty for a user page / custom domain, or set
+`/<repo>` for a project page.
 
 ## Other Hosts
 

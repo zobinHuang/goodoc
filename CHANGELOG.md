@@ -5,6 +5,13 @@ with `npm run upgrade -- --ref vX.Y.Z`. See [UPGRADING.md](./UPGRADING.md).
 
 ## Unreleased
 
+### Fixed
+- **GitHub Pages deploy on user/org pages and custom domains.** The workflow
+  hard-coded the base path to `/<repo>`, which 404'd every asset (unstyled page,
+  no redirect) when the site is served at the domain root. It now auto-detects:
+  empty base path for `*.github.io` repos and custom domains (a `CNAME` file),
+  `/<repo>` for project pages.
+
 ### Added
 - **Agent skill** as a single source-of-truth file at `skills/goodoc/SKILL.md`,
   distributable to any agent (Claude, Codex, Gemini, …) via `npx skills`. It
