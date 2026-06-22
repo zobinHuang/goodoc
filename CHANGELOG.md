@@ -5,6 +5,11 @@ with `npm run upgrade -- --ref vX.Y.Z`. See [UPGRADING.md](./UPGRADING.md).
 
 ## Unreleased
 
+### Changed
+- Root `/` now forwards to the default locale via a no-JS
+  `<meta http-equiv="refresh">` (instant, works without JavaScript), with the
+  client-side redirect kept as a fallback — no more splash flash.
+
 ### Fixed
 - **GitHub Pages deploy on user/org pages and custom domains.** The workflow
   hard-coded the base path to `/<repo>`, which 404'd every asset (unstyled page,
