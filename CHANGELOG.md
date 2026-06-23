@@ -5,6 +5,14 @@ with `npm run upgrade -- --ref vX.Y.Z`. See [UPGRADING.md](./UPGRADING.md).
 
 ## Unreleased
 
+### Fixed
+- **`npm run upgrade` can now run several times in a row without committing in
+  between.** The dirty-tree safety check previously tripped on framework files
+  left uncommitted by a *previous* upgrade. It now only blocks when a framework
+  file's contents actually differ from the upstream version being applied, so
+  re-running (or running after a partial upgrade) no longer demands a commit
+  first. Genuine local edits to framework files are still protected.
+
 ### Added
 - **Hero note** — an optional small line under the hero subhead, configured via
   `hero.note` in `lib/site-config.ts`: a `prefix`, an optional inline `link`, and
