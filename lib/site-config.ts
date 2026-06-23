@@ -64,6 +64,12 @@ export type HeroPlacement = "below" | "overlap";
  */
 export interface HeroMediaLayout {
   /**
+   * Width ratio of the text column to the showcase column (overlap only).
+   * `1` = equal split (default), `1.4` = text column 40% wider than the
+   * showcase, `0.8` = text column narrower. Read from the first item.
+   */
+  textRatio?: number;
+  /**
    * Edge fade, `0` (sharp — no fade) … `1` (strong fade). Overlap only.
    * Defaults to `0.4` for images/videos and `0` for custom slots (so discrete
    * components keep crisp edges). Lower it if the fade hides your content.
@@ -185,7 +191,7 @@ export const siteConfig: SiteConfig = {
             src: "/hero-preview.svg",
             alt: "docs view",
             placement: "overlap",
-            layout: { feather: 0.35, offsetX: -14, width: 130, glow: true },
+            layout: { textRatio: 1.25, feather: 0.35, offsetX: -14, width: 130, glow: true },
           },
           { type: "image", src: "/hero-preview-blog.svg",  alt: "blog view" },
           { type: "image", src: "/hero-preview-agent.svg", alt: "agent view" },
@@ -258,7 +264,7 @@ export const siteConfig: SiteConfig = {
             src: "/hero-preview.svg",
             alt: "文档视图",
             placement: "overlap",
-            layout: { feather: 0.35, offsetX: -14, width: 130, glow: true },
+            layout: { textRatio: 1.25, feather: 0.35, offsetX: -14, width: 130, glow: true },
           },
           { type: "image", src: "/hero-preview-blog.svg",  alt: "博客视图" },
           { type: "image", src: "/hero-preview-agent.svg", alt: "Agent 视图" },

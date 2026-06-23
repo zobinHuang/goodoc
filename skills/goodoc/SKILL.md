@@ -224,7 +224,8 @@ Put assets in `public/`. Videos play as muted, looping ambient clips.
 
 ```ts
 media: { type: "image", src: "/hero.png", placement: "overlap",
-  layout: { feather: 0.35, offsetX: -14, width: 130, glow: true } }
+  layout: { textRatio: 1.25, feather: 0.35, offsetX: -14, width: 130, glow: true } }
+// textRatio = text col : showcase col width (1 = equal; >1 favors the text).
 // feather 0 (sharp) … 1 (strong); default 0.4 for media, 0 for custom slots.
 // offsetX %, width % — overlap only. glow = ambient blur behind the showcase.
 ```

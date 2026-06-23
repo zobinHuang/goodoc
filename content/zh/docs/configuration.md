@@ -118,17 +118,19 @@ en: {
     {
       type: "image", src: "/hero.png", placement: "overlap",
       layout: {
-        feather: 0.35,  // 边缘羽化，0（锐利）… 1（强）；媒体默认 0.4
-        offsetX: -14,   // 水平偏移 %（overlap）；负值朝文字方向移动
-        width: 130,     // 占所在列的宽度 %（overlap）
-        glow: true,     // 展示区背后的柔光
+        textRatio: 1.25, // 文字列 : 展示列 的宽度比（1 = 平分）
+        feather: 0.35,   // 边缘羽化，0（锐利）… 1（强）；媒体默认 0.4
+        offsetX: -14,    // 水平偏移 %（overlap）；负值朝文字方向移动
+        width: 130,      // 占所在列的宽度 %（overlap）
+        glow: true,      // 展示区背后的柔光
       },
     },
   ]
   ```
 
-  如果羽化挡住了图片/视频太多，把 `feather` 调小（或设为 `0`）。自定义组件
-  （见下）默认 `feather: 0`，因此边缘保持锐利。
+  用 `textRatio` 调整两列的比例 —— 例如 `1.4` 让文字列比展示列宽 40%，`0.8`
+  则更窄。如果羽化挡住了图片/视频太多，把 `feather` 调小（或设为 `0`）。自定义
+  组件（见下）默认 `feather: 0`，因此边缘保持锐利。
 
   **自定义组件** —— 展示区还能放任意你自己写的 React 组件（实时演示、动态图示、
   嵌入内容等）。在 `lib/hero-slots.tsx` 里以某个 key 注册它，再用 `type: "custom"`

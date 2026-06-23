@@ -122,18 +122,20 @@ en: {
     {
       type: "image", src: "/hero.png", placement: "overlap",
       layout: {
-        feather: 0.35,  // edge fade 0 (sharp) … 1 (strong); default 0.4 for media
-        offsetX: -14,   // % horizontal shift (overlap); negative moves toward text
-        width: 130,     // % of its column (overlap)
-        glow: true,     // soft ambient glow behind the showcase
+        textRatio: 1.25, // text column : showcase column width (1 = equal split)
+        feather: 0.35,   // edge fade 0 (sharp) … 1 (strong); default 0.4 for media
+        offsetX: -14,    // % horizontal shift (overlap); negative moves toward text
+        width: 130,      // % of its column (overlap)
+        glow: true,      // soft ambient glow behind the showcase
       },
     },
   ]
   ```
 
-  If the fade hides too much of an image/video, lower `feather` (or set it to
-  `0`). Custom components (below) default to `feather: 0` so their edges stay
-  crisp.
+  Use `textRatio` to rebalance the two columns — e.g. `1.4` gives the text 40%
+  more width than the showcase, `0.8` makes it narrower. If the fade hides too
+  much of an image/video, lower `feather` (or set it to `0`). Custom components
+  (below) default to `feather: 0` so their edges stay crisp.
 
   **Custom component** — the showcase can also hold any React component you
   write (a live demo, an animated diagram, an embed). Register it under a key in

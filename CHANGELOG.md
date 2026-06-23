@@ -7,11 +7,14 @@ with `npm run upgrade -- --ref vX.Y.Z`. See [UPGRADING.md](./UPGRADING.md).
 
 ### Changed
 - **Hero showcase framing is now tunable and the overlap feather is gentler.**
-  `hero.media[].layout` exposes `feather` (edge fade, `0` sharp … `1` strong),
-  `offsetX`, `width`, and `glow`. The default feather dropped from a heavy fade
-  to `0.4`, and **custom-component slots default to `feather: 0`** so discrete
-  components keep crisp edges. Feather resolves per slide (so mixed carousels
-  work); geometry is read from the first item.
+  `hero.media[].layout` exposes `textRatio` (text-column vs showcase-column
+  width — previously hard-coded to a 50/50 split), `feather` (edge fade, `0`
+  sharp … `1` strong), `offsetX`, `width`, and `glow`. The default feather
+  dropped from a heavy fade to `0.4`, and **custom-component slots default to
+  `feather: 0`** so discrete components keep crisp edges. Feather resolves per
+  slide (so mixed carousels work); geometry is read from the first item. On
+  desktop the headline/subhead now fill their (ratio-driven) column instead of a
+  fixed max width; mobile keeps the readable caps.
 
 ### Added
 - **MDX support — custom components in docs & blog.** Name a content file `.mdx`

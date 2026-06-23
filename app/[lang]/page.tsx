@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, type CSSProperties } from "react";
 import { SiteShell } from "@/components/site-shell";
 import { HeroMedia } from "@/components/hero-media";
 import { getSiteContent } from "@/lib/site-config";
@@ -37,6 +37,8 @@ export default async function HomePage({
   const recentPosts = getAllBlogPosts(lang).slice(0, 3);
   const firstMedia = Array.isArray(hero.media) ? hero.media[0] : hero.media;
   const overlapMedia = firstMedia?.placement === "overlap";
+  // Text-column : showcase-column width ratio for overlap (1 = equal split).
+  const textRatio = firstMedia?.layout?.textRatio ?? 1;
 
   return (
     <SiteShell lang={lang}>
@@ -58,8 +60,13 @@ export default async function HomePage({
           <div
             className={
               overlapMedia
-                ? "grid items-center gap-8 py-16 sm:py-20 lg:grid-cols-2 lg:gap-6 lg:py-24"
+                ? "grid items-center gap-8 py-16 sm:py-20 lg:[grid-template-columns:var(--hero-cols)] lg:gap-6 lg:py-24"
                 : `pt-20 text-center sm:pt-28 ${hero.media ? "" : "pb-16"}`
+            }
+            style={
+              overlapMedia
+                ? ({ "--hero-cols": `${textRatio}fr 1fr` } as CSSProperties)
+                : undefined
             }
           >
             <div
@@ -73,7 +80,7 @@ export default async function HomePage({
               <h1
                 className={`mt-6 font-serif text-4xl font-bold leading-tight tracking-tight text-ink ${
                   overlapMedia
-                    ? "mx-auto max-w-xl sm:text-5xl lg:mx-0"
+                    ? "mx-auto max-w-xl sm:text-5xl lg:mx-0 lg:max-w-none"
                     : "mx-auto max-w-3xl sm:text-6xl"
                 }`}
               >
@@ -81,7 +88,9 @@ export default async function HomePage({
               </h1>
               <p
                 className={`mt-6 text-lg leading-relaxed text-ink-soft ${
-                  overlapMedia ? "mx-auto max-w-md lg:mx-0" : "mx-auto max-w-2xl"
+                  overlapMedia
+                    ? "mx-auto max-w-md lg:mx-0 lg:max-w-none"
+                    : "mx-auto max-w-2xl"
                 }`}
               >
                 {hero.subhead}
