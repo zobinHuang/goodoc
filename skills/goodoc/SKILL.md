@@ -198,7 +198,9 @@ locales: {
 `hero.note` (optional) adds a small line under the subhead — `prefix` + an
 optional inline `link` + `suffix`. Internal link hrefs are locale-relative
 (`/docs/…`, locale prefix added automatically); external (`https://…`) open in a
-new tab.
+new tab. Style it with `note.style`: `variant` (`"text"` | `"pill"`), `tone`
+(`muted`/`soft`/`ink`/`accent`), `size` (`xs`/`sm`/`base`), or the escape hatches
+`className` / `linkClassName` (literal Tailwind strings for full control).
 
 Add a feature illustration by dropping an SVG/PNG in `public/features/` and
 referencing it as `image`. `hero.media` (optional) shows an image or video alongside the hero text. Pass

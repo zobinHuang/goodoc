@@ -65,6 +65,7 @@ en: {
       prefix: "New: ",
       link: { label: "MDX & components", href: "/docs/humanize/mdx-components/" },
       suffix: " — write React in your docs.",
+      style: { variant: "pill", tone: "soft" },   // optional styling
     },
     media: { type: "image", src: "/hero-preview.svg", alt: "preview" }, // optional
   },
@@ -98,6 +99,21 @@ en: {
   announcement). `prefix` and `suffix` are plain text around an optional inline
   `link`; an internal `href` (`/docs/…`) gets the locale prefix automatically,
   an external one (`https://…`) opens in a new tab. Omit `note` to hide it.
+
+  Style it with `note.style`:
+
+  ```ts
+  style: {
+    variant: "pill",     // "text" (plain line, default) or "pill" (bordered chip)
+    tone: "soft",        // "muted" (default) | "soft" | "ink" | "accent"
+    size: "sm",          // "xs" | "sm" (default) | "base"
+    className: "",        // extra classes on the container/chip (literal strings)
+    linkClassName: "",    // replaces the default link classes when set
+  }
+  ```
+
+  `className` / `linkClassName` are full escape hatches — write any Tailwind
+  classes (as literal strings, so Tailwind can see them) for complete control.
 - **`hero.media`** is optional — an image or video shown alongside the hero
   text. Pass a single item **or an array**; arrays crossfade automatically
   every four seconds. Put files in `public/` and point `src` at them.

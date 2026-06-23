@@ -62,6 +62,7 @@ en: {
       prefix: "New: ",
       link: { label: "MDX & components", href: "/docs/humanize/mdx-components/" },
       suffix: " — write React in your docs.",
+      style: { variant: "pill", tone: "soft" },   // 可选样式
     },
     media: { type: "image", src: "/hero-preview.svg", alt: "preview" }, // 可选
   },
@@ -94,6 +95,21 @@ en: {
 - **`hero.note`** 是可选的 —— 副标题下方的一行小字（例如公告）。`prefix` 与
   `suffix` 是围绕可选行内 `link` 的纯文本；内部 `href`（`/docs/…`）会自动加上
   语言前缀，外部 `href`（`https://…`）则在新标签页打开。省略 `note` 即不显示。
+
+  用 `note.style` 调整样式：
+
+  ```ts
+  style: {
+    variant: "pill",     // "text"（纯文字行，默认）或 "pill"（带边框的小胶囊）
+    tone: "soft",        // "muted"（默认）| "soft" | "ink" | "accent"
+    size: "sm",          // "xs" | "sm"（默认）| "base"
+    className: "",        // 追加到容器/胶囊的额外 class（写字面量字符串）
+    linkClassName: "",    // 设置后替换默认的链接 class
+  }
+  ```
+
+  `className` / `linkClassName` 是完全的“逃生舱” —— 写任意 Tailwind class
+  （要用字面量字符串，Tailwind 才扫得到），即可完全自定义。
 - **`hero.media`** 是可选的 —— 在 hero 区域展示图片或视频。可传单个对象，
   也可传**数组**；传数组时会每四秒自动淡入淡出切换。把文件放进 `public/`，
   把 `src` 指过去。

@@ -9,6 +9,24 @@ import { resolveLocale, localePath } from "@/lib/i18n";
 import { withBasePath } from "@/lib/paths";
 import { formatDate } from "@/lib/format";
 
+/** Hero-note text tone → color class (literal so Tailwind generates them). */
+const NOTE_TONE: Record<string, string> = {
+  muted: "text-muted",
+  soft: "text-ink-soft",
+  ink: "text-ink",
+  accent: "text-accent",
+};
+
+/** Hero-note text size → size class. */
+const NOTE_SIZE: Record<string, string> = {
+  xs: "text-xs",
+  sm: "text-sm",
+  base: "text-base",
+};
+
+const NOTE_LINK_DEFAULT =
+  "font-medium text-accent underline-offset-2 hover:text-accent-strong hover:underline";
+
 /** Render plain text, turning `backtick` spans into <code>. */
 function inlineCode(text: string) {
   return text.split(/(`[^`]+`)/g).map((part, i) =>
@@ -39,6 +57,30 @@ export default async function HomePage({
   const overlapMedia = firstMedia?.placement === "overlap";
   // Text-column : showcase-column width ratio for overlap (1 = equal split).
   const textRatio = firstMedia?.layout?.textRatio ?? 1;
+
+  // Resolve hero-note styling.
+  const noteStyle = hero.note?.style ?? {};
+  const noteVariant = noteStyle.variant ?? "text";
+  const noteToneClass = NOTE_TONE[noteStyle.tone ?? "muted"] ?? NOTE_TONE.muted;
+  const noteSizeClass = NOTE_SIZE[noteStyle.size ?? "sm"] ?? NOTE_SIZE.sm;
+  const noteExtraClass = noteStyle.className ?? "";
+  const noteLinkClass = noteStyle.linkClassName ?? NOTE_LINK_DEFAULT;
+  const noteLinkEl = hero.note?.link ? (
+    hero.note.link.href.startsWith("http") ? (
+      <a
+        href={hero.note.link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={noteLinkClass}
+      >
+        {hero.note.link.label}
+      </a>
+    ) : (
+      <Link href={localePath(lang, hero.note.link.href)} className={noteLinkClass}>
+        {hero.note.link.label}
+      </Link>
+    )
+  ) : null;
 
   return (
     <SiteShell lang={lang}>
@@ -95,36 +137,36 @@ export default async function HomePage({
               >
                 {hero.subhead}
               </p>
-              {hero.note && (
-                <p
-                  className={`mt-5 text-sm text-muted ${
-                    overlapMedia
-                      ? "mx-auto max-w-md lg:mx-0 lg:max-w-none"
-                      : "mx-auto max-w-2xl"
-                  }`}
-                >
-                  {hero.note.prefix}
-                  {hero.note.link &&
-                    (hero.note.link.href.startsWith("http") ? (
-                      <a
-                        href={hero.note.link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-medium text-accent underline-offset-2 hover:text-accent-strong hover:underline"
-                      >
-                        {hero.note.link.label}
-                      </a>
-                    ) : (
-                      <Link
-                        href={localePath(lang, hero.note.link.href)}
-                        className="font-medium text-accent underline-offset-2 hover:text-accent-strong hover:underline"
-                      >
-                        {hero.note.link.label}
-                      </Link>
-                    ))}
-                  {hero.note.suffix}
-                </p>
-              )}
+              {hero.note &&
+                (noteVariant === "pill" ? (
+                  <div
+                    className={`mt-5 flex ${
+                      overlapMedia
+                        ? "justify-center lg:justify-start"
+                        : "justify-center"
+                    }`}
+                  >
+                    <span
+                      className={`inline-flex items-center gap-1.5 rounded-full border border-line bg-paper-deep px-3.5 py-1.5 ${noteSizeClass} ${noteToneClass} ${noteExtraClass}`}
+                    >
+                      {hero.note.prefix}
+                      {noteLinkEl}
+                      {hero.note.suffix}
+                    </span>
+                  </div>
+                ) : (
+                  <p
+                    className={`mt-5 ${noteSizeClass} ${noteToneClass} ${
+                      overlapMedia
+                        ? "mx-auto max-w-md lg:mx-0 lg:max-w-none"
+                        : "mx-auto max-w-2xl"
+                    } ${noteExtraClass}`}
+                  >
+                    {hero.note.prefix}
+                    {noteLinkEl}
+                    {hero.note.suffix}
+                  </p>
+                ))}
               <div
                 className={`mt-9 flex flex-wrap items-center gap-3 ${
                   overlapMedia ? "justify-center lg:justify-start" : "justify-center"

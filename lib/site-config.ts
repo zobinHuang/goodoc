@@ -12,6 +12,23 @@ export interface NavLink {
   href: string;
 }
 
+/** Styling for the hero note. Semantic knobs plus raw-class escape hatches. */
+export interface HeroNoteStyle {
+  /** `"text"` — a plain line (default). `"pill"` — a bordered, rounded chip. */
+  variant?: "text" | "pill";
+  /** Text tone. Default `"muted"`. */
+  tone?: "muted" | "soft" | "ink" | "accent";
+  /** Text size. Default `"sm"`. */
+  size?: "xs" | "sm" | "base";
+  /**
+   * Extra Tailwind classes appended to the note container/chip. Use literal
+   * class strings (Tailwind only generates classes it sees in source).
+   */
+  className?: string;
+  /** Classes for the inline link; replaces the default link styling when set. */
+  linkClassName?: string;
+}
+
 /** A small note line under the hero subhead, with an optional inline link. */
 export interface HeroNote {
   /** Text before the link. */
@@ -24,6 +41,8 @@ export interface HeroNote {
   link?: NavLink;
   /** Text after the link. */
   suffix?: string;
+  /** Optional styling — variant, tone, size, or raw class overrides. */
+  style?: HeroNoteStyle;
 }
 
 /** How the brand is shown in the header/footer. */
@@ -206,6 +225,9 @@ export const siteConfig: SiteConfig = {
             href: "/docs/humanize/mdx-components/",
           },
           suffix: " — write React inside your docs.",
+          // Style it as a chip. Try variant "text", a different tone/size, or
+          // your own classes via `className` / `linkClassName`.
+          style: { variant: "pill", tone: "soft" },
         },
         // Array of images/videos — crossfade carousel. Drop yours in public/.
         // Use a single object (not an array) if you only have one asset.
@@ -291,6 +313,7 @@ export const siteConfig: SiteConfig = {
             href: "/docs/humanize/mdx-components/",
           },
           suffix: " —— 在文档里直接写 React。",
+          style: { variant: "pill", tone: "soft" },
         },
         media: [
           {

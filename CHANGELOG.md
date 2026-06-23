@@ -10,7 +10,10 @@ with `npm run upgrade -- --ref vX.Y.Z`. See [UPGRADING.md](./UPGRADING.md).
   `hero.note` in `lib/site-config.ts`: a `prefix`, an optional inline `link`, and
   a `suffix`. Internal link hrefs are locale-relative (locale prefix added
   automatically); external `https://…` hrefs open in a new tab. Good for an
-  announcement or "backed by" line. Omit `note` to hide it.
+  announcement or "backed by" line. Omit `note` to hide it. Styling is exposed
+  via `note.style`: a `variant` (`"text"` or a bordered `"pill"`), `tone`,
+  `size`, and raw `className` / `linkClassName` escape hatches (literal Tailwind
+  classes, which the v4 scanner picks up from `site-config.ts`).
 
 ### Changed
 - **Hero showcase framing is now tunable and the overlap feather is gentler.**
