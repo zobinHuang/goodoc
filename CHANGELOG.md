@@ -6,6 +6,15 @@ with `npm run upgrade -- --ref vX.Y.Z`. See [UPGRADING.md](./UPGRADING.md).
 ## Unreleased
 
 ### Added
+- **MDX support — custom components in docs & blog.** Name a content file `.mdx`
+  (instead of `.md`) to embed live React components in the prose, Docusaurus-style.
+  Components are registered in the new user-owned `lib/mdx-components.tsx` and are
+  available in every `.mdx` file with no per-file import; Markdown renders inside
+  them and JSX expressions work. Interactive `"use client"` components hydrate
+  normally even though the site is a static export (MDX compiles at build time).
+  The whole existing pipeline is reused (GFM, Shiki, table of contents, heading
+  anchors, locale/base-path link rewriting), and `.md` files are unchanged and
+  still take the fast HTML path. Worked example: `content/<locale>/docs/mdx-components.mdx`.
 - **Custom hero showcase components.** `hero.media` now accepts
   `{ type: "custom", slot: "<key>" }`, rendering any React node you register in
   the new user-owned `lib/hero-slots.tsx`. Custom slots can be mixed into the

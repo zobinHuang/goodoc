@@ -1,0 +1,50 @@
+---
+title: MDX & Custom Components
+description: Write .mdx files to embed your own React components right inside the prose.
+group: Writing
+order: 3
+---
+
+# MDX & Custom Components
+
+Most docs are plain Markdown (`.md`). When you want **live components** inside
+the prose — callouts, charts, embeds, interactive demos — name the file `.mdx`
+instead. Everything Markdown does still works; you just gain JSX.
+
+## A callout
+
+goodoc ships one example component, `Callout`, registered in
+`lib/mdx-components.tsx`. Use it as a tag — no import needed:
+
+<Callout type="tip">
+  This box is a React component, and **Markdown still renders inside it** —
+  including `inline code` and [links](/docs/humanize/configuration/).
+</Callout>
+
+<Callout type="warning">
+  `.mdx` compiles at build time, so a typo in a component fails the build
+  loudly rather than shipping broken.
+</Callout>
+
+## How it works
+
+1. Register components in `lib/mdx-components.tsx` (yours — never overwritten by
+   upgrades). They become available in every `.mdx` file automatically.
+2. Reference them by tag name. Pass props, including JSX expressions:
+   `<Chart data={[1, 2, 3]} />`.
+3. For interactive components (state, effects), put them in their own file with
+   a `"use client"` directive and import them into the registry — they hydrate
+   normally even though the site is a fully static export.
+
+## Everything Markdown still works
+
+Tables, task lists, and Shiki-highlighted code all render exactly as in `.md`:
+
+| Format | Custom components | Speed |
+| ------ | ----------------- | ----- |
+| `.md`  | no                | fastest |
+| `.mdx` | yes               | compiled at build |
+
+- [x] GFM tables and task lists
+- [x] Syntax highlighting
+- [x] Headings, the table of contents, and `#` anchors

@@ -1,0 +1,47 @@
+---
+title: MDX 与自定义组件
+description: 用 .mdx 文件，把你自己的 React 组件直接嵌进正文里。
+group: 写作
+order: 3
+---
+
+# MDX 与自定义组件
+
+大多数文档是纯 Markdown（`.md`）。当你想在正文里嵌入**实时组件**——提示框、图表、
+嵌入内容、交互式演示——把文件命名为 `.mdx` 即可。Markdown 的一切照常可用，你只是
+额外获得了 JSX。
+
+## 提示框
+
+goodoc 自带一个示例组件 `Callout`，注册在 `lib/mdx-components.tsx` 里。直接当标签
+用，无需 import：
+
+<Callout type="tip">
+  这个框就是一个 React 组件，而且**里面的 Markdown 照常渲染**——包括 `行内代码`
+  和[链接](/docs/humanize/configuration/)。
+</Callout>
+
+<Callout type="warning">
+  `.mdx` 在构建时编译，所以组件里的笔误会让构建直接报错，而不会把坏页面发出去。
+</Callout>
+
+## 工作原理
+
+1. 在 `lib/mdx-components.tsx` 里注册组件（属于你 —— 升级时永不覆盖）。它们会自动
+   在每个 `.mdx` 文件里可用。
+2. 用标签名引用它们，可以传 props，包括 JSX 表达式：`<Chart data={[1, 2, 3]} />`。
+3. 对于交互式组件（state、effect），把它们放进带 `"use client"` 指令的独立文件再
+   import 进注册表——即使站点是纯静态导出，它们也能正常 hydrate。
+
+## Markdown 的一切照常可用
+
+表格、任务列表、Shiki 代码高亮的渲染都与 `.md` 完全一致：
+
+| 格式   | 自定义组件 | 速度 |
+| ------ | ---------- | ---- |
+| `.md`  | 否         | 最快 |
+| `.mdx` | 是         | 构建时编译 |
+
+- [x] GFM 表格与任务列表
+- [x] 语法高亮
+- [x] 标题、目录与 `#` 锚点
