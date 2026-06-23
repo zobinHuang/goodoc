@@ -109,6 +109,26 @@ en: {
   ```
 
   视频以静音循环的环境画面播放。省略 `media` 即不显示。
+
+  **自定义组件** —— 展示区还能放任意你自己写的 React 组件（实时演示、动态图示、
+  嵌入内容等）。在 `lib/hero-slots.tsx` 里以某个 key 注册它，再用 `type: "custom"`
+  引用这个 key：
+
+  ```tsx
+  // lib/hero-slots.tsx（属于你 —— 升级时永不覆盖）
+  export const heroSlots = {
+    demo: <LiveDemo />,
+  };
+  ```
+
+  ```ts
+  // lib/site-config.ts
+  media: { type: "custom", slot: "demo", placement: "overlap" }
+  ```
+
+  自定义槽位可与图片/视频混在同一个轮播数组里，并继承同样的 `below`/`overlap`
+  框架。若某个槽位需要 hooks 或浏览器 API，把它的组件放进带 `"use client"`
+  指令的文件里。
 - **`features[].image`** 是可选的 —— 在 `public/` 下提供一张 SVG/PNG
   来给卡片配图，或者省略它只用文字。
 - **`quickstart`** 驱动落地页的安装区块：一个显示 `command` 的终端，加上带编号的

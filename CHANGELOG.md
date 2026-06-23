@@ -6,6 +6,18 @@ with `npm run upgrade -- --ref vX.Y.Z`. See [UPGRADING.md](./UPGRADING.md).
 ## Unreleased
 
 ### Added
+- **Custom hero showcase components.** `hero.media` now accepts
+  `{ type: "custom", slot: "<key>" }`, rendering any React node you register in
+  the new user-owned `lib/hero-slots.tsx`. Custom slots can be mixed into the
+  carousel array and inherit the `below`/`overlap` framing — so the showcase can
+  hold a live demo, animated diagram, or embed, not just an image/video.
+- **`seed` manifest list + upgrade bootstrapping.** `npm run upgrade` now creates
+  user-owned files listed under `seed` (e.g. `lib/hero-slots.tsx`) when they are
+  missing locally, and never touches them if they already exist. This lets the
+  framework introduce new user-editable files that older clones pick up safely.
+- **Feature card video** — `features[].video` (+ optional `poster`) renders a
+  muted, looping clip in a card; `image` remains the fallback.
+
 - **Hero media carousel** — `hero.media` now accepts an array of items
   (`HeroMedia[]`). Multiple images/videos crossfade every 4 s. "below" placement
   shows dot indicators below the card; "overlap" placement auto-advances silently.

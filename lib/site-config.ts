@@ -49,21 +49,46 @@ export interface Quickstart {
   note?: string;
 }
 
-/** Optional showcase media displayed in the hero. */
-export interface HeroMedia {
-  type: "image" | "video";
-  /** Path under public/, e.g. "/hero.png" or "/hero.mp4". */
-  src: string;
-  /** Image alt text, or a poster frame for a video. */
-  alt?: string;
-  poster?: string;
-  /**
-   * "below"  — an elegant card beneath the hero text (default).
-   * "overlap" — same band as the text: feathered edges and shifted to the side
-   *   so it sits behind/beside the words without competing with them.
-   */
-  placement?: "below" | "overlap";
+/**
+ * Where a hero showcase item sits:
+ * - "below"  — an elegant card beneath the hero text (default).
+ * - "overlap" — same band as the text: feathered edges and shifted to the side
+ *   so it sits behind/beside the words without competing with them.
+ */
+export type HeroPlacement = "below" | "overlap";
+
+interface HeroMediaBase {
+  placement?: HeroPlacement;
 }
+
+/** A still image under public/, e.g. "/hero.png". */
+export interface HeroImage extends HeroMediaBase {
+  type: "image";
+  src: string;
+  alt?: string;
+}
+
+/** A muted, looping video under public/, e.g. "/hero.mp4". */
+export interface HeroVideo extends HeroMediaBase {
+  type: "video";
+  src: string;
+  /** Poster frame shown before the video loads. */
+  poster?: string;
+  alt?: string;
+}
+
+/**
+ * A custom React component you provide. Register it under a key in
+ * `lib/hero-slots.tsx`, then reference that key here as `slot`. Anything you can
+ * render — a live demo, an animated diagram, an embed — can fill the showcase.
+ */
+export interface HeroCustom extends HeroMediaBase {
+  type: "custom";
+  slot: string;
+}
+
+/** Optional showcase displayed in the hero: image, video, or custom component. */
+export type HeroMedia = HeroImage | HeroVideo | HeroCustom;
 
 export interface LocaleContent {
   tagline: string;

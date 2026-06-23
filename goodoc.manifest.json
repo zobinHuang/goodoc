@@ -29,12 +29,17 @@
   "review": [
     "package.json"
   ],
+  "seed": [
+    "lib/hero-slots.tsx"
+  ],
   "userOwned": [
     "content",
     "public",
     "lib/site-config.ts",
+    "lib/hero-slots.tsx",
     "app/theme.css",
     "README.md",
     "LICENSE"
-  ]
+  ],
+  "$seedComment": "Files copied from upstream ONLY when missing locally — used to bootstrap new user-owned files the framework starts to depend on. Existing files are never overwritten."
 }

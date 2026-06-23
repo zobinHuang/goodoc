@@ -112,6 +112,26 @@ en: {
   ```
 
   Videos play as muted, looping ambient clips. Omit `media` to hide it.
+
+  **Custom component** — the showcase can also hold any React component you
+  write (a live demo, an animated diagram, an embed). Register it under a key in
+  `lib/hero-slots.tsx`, then reference that key with `type: "custom"`:
+
+  ```tsx
+  // lib/hero-slots.tsx  (yours — never overwritten by upgrades)
+  export const heroSlots = {
+    demo: <LiveDemo />,
+  };
+  ```
+
+  ```ts
+  // lib/site-config.ts
+  media: { type: "custom", slot: "demo", placement: "overlap" }
+  ```
+
+  Custom slots can be mixed with images/videos in a carousel array, and inherit
+  the same `below`/`overlap` framing. If a slot needs hooks or browser APIs, put
+  its component in a file with a `"use client"` directive.
 - **`features[].image`** is optional — provide an SVG/PNG under `public/` to
   illustrate a card, or omit it for text only.
 - **`quickstart`** powers the landing page's install section: a terminal showing

@@ -33,6 +33,7 @@ default. Blog mirrors docs at `/<lang>/blog/{humanize,agent}/<slug>/`.
    `npm run upgrade`. Edit freely:
    - `content/` — your docs and blog
    - `lib/site-config.ts` — project identity, landing copy, nav, footer
+   - `lib/hero-slots.tsx` — your custom hero showcase components
    - `app/theme.css` — palette and font tokens
    - `public/` — images and assets
    - `README*`
@@ -53,6 +54,7 @@ default. Blog mirrors docs at `/<lang>/blog/{humanize,agent}/<slug>/`.
 content/<locale>/docs/*.md     docs (sidebar)         ← author here
 content/<locale>/blog/*.md     blog posts             ← author here
 lib/site-config.ts             identity, hero, features, quickstart, nav, footer
+lib/hero-slots.tsx             custom hero showcase components   ← author here
 app/theme.css                  colors + font variables
 public/                        images/assets (e.g. /features/*.svg)
 lib/i18n.ts                    locales, default, helpers   (framework)
@@ -177,6 +179,21 @@ media: [
 ```
 
 Put assets in `public/`. Videos play as muted, looping ambient clips.
+
+**Custom component** — the showcase can hold any React node, not just media.
+Register it under a key in `lib/hero-slots.tsx` (user-owned), then reference it:
+
+```tsx
+// lib/hero-slots.tsx
+export const heroSlots = { demo: <LiveDemo /> };
+```
+```ts
+// lib/site-config.ts — single, or mixed into a carousel array
+media: { type: "custom", slot: "demo", placement: "overlap" }
+```
+
+Custom slots inherit the same `below`/`overlap` framing. Components needing
+hooks or browser APIs go in their own `"use client"` file.
 
 ## Task: change the theme (colors / fonts)
 
