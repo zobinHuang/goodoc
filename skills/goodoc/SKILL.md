@@ -180,20 +180,39 @@ media: [
 
 Put assets in `public/`. Videos play as muted, looping ambient clips.
 
-**Custom component** — the showcase can hold any React node, not just media.
-Register it under a key in `lib/hero-slots.tsx` (user-owned), then reference it:
+**Custom component** — the showcase isn't limited to images/videos; it can hold
+any React component you write. See the task below.
 
-```tsx
-// lib/hero-slots.tsx
-export const heroSlots = { demo: <LiveDemo /> };
-```
-```ts
-// lib/site-config.ts — single, or mixed into a carousel array
-media: { type: "custom", slot: "demo", placement: "overlap" }
-```
+## Task: put a custom component in the hero showcase
 
-Custom slots inherit the same `below`/`overlap` framing. Components needing
-hooks or browser APIs go in their own `"use client"` file.
+The hero showcase can render **your own React components** — a live demo, an
+animated diagram, an embed, a stats panel — not just images and videos. This is
+fully **user-owned and upgrade-safe**: you never touch a framework file, and
+`npm run upgrade` never overwrites your components.
+
+Two steps, both in user-owned files:
+
+1. Register the component under a key in `lib/hero-slots.tsx` (this file is
+   yours — `npm run upgrade` seeds it if missing and never overwrites it):
+
+   ```tsx
+   // lib/hero-slots.tsx
+   import { LiveDemo } from "@/components/your-demo"; // import your own files freely
+   export const heroSlots = { demo: <LiveDemo /> };
+   ```
+
+2. Reference the key from `lib/site-config.ts` with `type: "custom"`:
+
+   ```ts
+   // single, or mixed into a carousel array alongside image/video items
+   media: { type: "custom", slot: "demo", placement: "overlap" }
+   ```
+
+Custom slots inherit the same `below`/`overlap` framing and carousel crossfade
+as media. The component can import your own files and third-party libraries. If
+it needs hooks, state, or browser APIs, put it in its own file with a
+`"use client"` directive (don't add `"use client"` to `lib/hero-slots.tsx`
+itself). You don't need to fork or edit the framework to do any of this.
 
 ## Task: change the theme (colors / fonts)
 
