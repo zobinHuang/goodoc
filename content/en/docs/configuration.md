@@ -113,6 +113,28 @@ en: {
 
   Videos play as muted, looping ambient clips. Omit `media` to hide it.
 
+  **Tuning the frame** — add a `layout` to position the showcase precisely. The
+  geometry (`offsetX`, `width`, `glow`) is read from the first item; `feather`
+  can be set per item:
+
+  ```ts
+  media: [
+    {
+      type: "image", src: "/hero.png", placement: "overlap",
+      layout: {
+        feather: 0.35,  // edge fade 0 (sharp) … 1 (strong); default 0.4 for media
+        offsetX: -14,   // % horizontal shift (overlap); negative moves toward text
+        width: 130,     // % of its column (overlap)
+        glow: true,     // soft ambient glow behind the showcase
+      },
+    },
+  ]
+  ```
+
+  If the fade hides too much of an image/video, lower `feather` (or set it to
+  `0`). Custom components (below) default to `feather: 0` so their edges stay
+  crisp.
+
   **Custom component** — the showcase can also hold any React component you
   write (a live demo, an animated diagram, an embed). Register it under a key in
   `lib/hero-slots.tsx`, then reference that key with `type: "custom"`:

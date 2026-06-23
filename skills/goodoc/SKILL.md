@@ -219,6 +219,16 @@ media: [
 
 Put assets in `public/`. Videos play as muted, looping ambient clips.
 
+**Tune the overlap frame** with `layout` (geometry read from the first item;
+`feather` is per item). If a fade hides content, lower `feather` (0 = off):
+
+```ts
+media: { type: "image", src: "/hero.png", placement: "overlap",
+  layout: { feather: 0.35, offsetX: -14, width: 130, glow: true } }
+// feather 0 (sharp) … 1 (strong); default 0.4 for media, 0 for custom slots.
+// offsetX %, width % — overlap only. glow = ambient blur behind the showcase.
+```
+
 **Custom component** — the showcase isn't limited to images/videos; it can hold
 any React component you write. See the task below.
 

@@ -57,8 +57,30 @@ export interface Quickstart {
  */
 export type HeroPlacement = "below" | "overlap";
 
+/**
+ * Fine-tunes the showcase frame so your media/components sit exactly where you
+ * want. For a carousel (array), the geometry (`offsetX`, `width`, `glow`) is read
+ * from the first item; `feather` can be set per item.
+ */
+export interface HeroMediaLayout {
+  /**
+   * Edge fade, `0` (sharp — no fade) … `1` (strong fade). Overlap only.
+   * Defaults to `0.4` for images/videos and `0` for custom slots (so discrete
+   * components keep crisp edges). Lower it if the fade hides your content.
+   */
+  feather?: number;
+  /** Horizontal shift in %, overlap only. Negative moves toward the text. Default `-14`. */
+  offsetX?: number;
+  /** Width as a % of its grid column, overlap only. Default `130`. */
+  width?: number;
+  /** Soft ambient glow behind the showcase. Default `true`. */
+  glow?: boolean;
+}
+
 interface HeroMediaBase {
   placement?: HeroPlacement;
+  /** Optional layout tuning for the showcase frame. */
+  layout?: HeroMediaLayout;
 }
 
 /** A still image under public/, e.g. "/hero.png". */
@@ -155,8 +177,16 @@ export const siteConfig: SiteConfig = {
         secondaryCta: { label: "Visit the blog", href: "/blog/" },
         // Array of images/videos — crossfade carousel. Drop yours in public/.
         // Use a single object (not an array) if you only have one asset.
+        // `layout` on the first item tunes the overlap frame; tweak `feather`
+        // (0 = no edge fade) if the fade hides too much of your media.
         media: [
-          { type: "image", src: "/hero-preview.svg",       alt: "docs view",  placement: "overlap" },
+          {
+            type: "image",
+            src: "/hero-preview.svg",
+            alt: "docs view",
+            placement: "overlap",
+            layout: { feather: 0.35, offsetX: -14, width: 130, glow: true },
+          },
           { type: "image", src: "/hero-preview-blog.svg",  alt: "blog view" },
           { type: "image", src: "/hero-preview-agent.svg", alt: "agent view" },
         ],
@@ -223,7 +253,13 @@ export const siteConfig: SiteConfig = {
         primaryCta: { label: "阅读文档", href: "/docs/" },
         secondaryCta: { label: "看看博客", href: "/blog/" },
         media: [
-          { type: "image", src: "/hero-preview.svg",       alt: "文档视图",   placement: "overlap" },
+          {
+            type: "image",
+            src: "/hero-preview.svg",
+            alt: "文档视图",
+            placement: "overlap",
+            layout: { feather: 0.35, offsetX: -14, width: 130, glow: true },
+          },
           { type: "image", src: "/hero-preview-blog.svg",  alt: "博客视图" },
           { type: "image", src: "/hero-preview-agent.svg", alt: "Agent 视图" },
         ],

@@ -110,6 +110,26 @@ en: {
 
   视频以静音循环的环境画面播放。省略 `media` 即不显示。
 
+  **微调展示框** —— 加一个 `layout` 来精确摆放展示内容。几何参数
+  （`offsetX`、`width`、`glow`）取第一项的值；`feather` 可逐项设置：
+
+  ```ts
+  media: [
+    {
+      type: "image", src: "/hero.png", placement: "overlap",
+      layout: {
+        feather: 0.35,  // 边缘羽化，0（锐利）… 1（强）；媒体默认 0.4
+        offsetX: -14,   // 水平偏移 %（overlap）；负值朝文字方向移动
+        width: 130,     // 占所在列的宽度 %（overlap）
+        glow: true,     // 展示区背后的柔光
+      },
+    },
+  ]
+  ```
+
+  如果羽化挡住了图片/视频太多，把 `feather` 调小（或设为 `0`）。自定义组件
+  （见下）默认 `feather: 0`，因此边缘保持锐利。
+
   **自定义组件** —— 展示区还能放任意你自己写的 React 组件（实时演示、动态图示、
   嵌入内容等）。在 `lib/hero-slots.tsx` 里以某个 key 注册它，再用 `type: "custom"`
   引用这个 key：
