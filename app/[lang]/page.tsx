@@ -95,6 +95,36 @@ export default async function HomePage({
               >
                 {hero.subhead}
               </p>
+              {hero.note && (
+                <p
+                  className={`mt-5 text-sm text-muted ${
+                    overlapMedia
+                      ? "mx-auto max-w-md lg:mx-0 lg:max-w-none"
+                      : "mx-auto max-w-2xl"
+                  }`}
+                >
+                  {hero.note.prefix}
+                  {hero.note.link &&
+                    (hero.note.link.href.startsWith("http") ? (
+                      <a
+                        href={hero.note.link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-medium text-accent underline-offset-2 hover:text-accent-strong hover:underline"
+                      >
+                        {hero.note.link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={localePath(lang, hero.note.link.href)}
+                        className="font-medium text-accent underline-offset-2 hover:text-accent-strong hover:underline"
+                      >
+                        {hero.note.link.label}
+                      </Link>
+                    ))}
+                  {hero.note.suffix}
+                </p>
+              )}
               <div
                 className={`mt-9 flex flex-wrap items-center gap-3 ${
                   overlapMedia ? "justify-center lg:justify-start" : "justify-center"

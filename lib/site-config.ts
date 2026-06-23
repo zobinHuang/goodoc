@@ -12,6 +12,20 @@ export interface NavLink {
   href: string;
 }
 
+/** A small note line under the hero subhead, with an optional inline link. */
+export interface HeroNote {
+  /** Text before the link. */
+  prefix?: string;
+  /**
+   * Optional inline link. Internal hrefs are locale-relative ("/docs/") and get
+   * the locale prefix automatically; external hrefs ("https://…") open in a new
+   * tab.
+   */
+  link?: NavLink;
+  /** Text after the link. */
+  suffix?: string;
+}
+
 /** How the brand is shown in the header/footer. */
 export type BrandMode = "logo-and-name" | "logo-only" | "name-only";
 
@@ -127,6 +141,8 @@ export interface LocaleContent {
     subhead: string;
     primaryCta: NavLink;
     secondaryCta: NavLink;
+    /** Optional small note shown under the subhead (e.g. an announcement). */
+    note?: HeroNote;
     /**
      * Optional showcase media for the hero.  Pass a single item or an array;
      * arrays cycle automatically with a crossfade.
@@ -181,6 +197,16 @@ export const siteConfig: SiteConfig = {
           "Landing page, Markdown docs, and a blog — in one. Every document has a humanize and an agent view: for readers, and for machines.",
         primaryCta: { label: "Read the docs", href: "/docs/" },
         secondaryCta: { label: "Visit the blog", href: "/blog/" },
+        // Small line under the subhead. `link` may be internal (locale-relative)
+        // or external (https://…); omit `note` to hide it.
+        note: {
+          prefix: "New: ",
+          link: {
+            label: "MDX & custom components",
+            href: "/docs/humanize/mdx-components/",
+          },
+          suffix: " — write React inside your docs.",
+        },
         // Array of images/videos — crossfade carousel. Drop yours in public/.
         // Use a single object (not an array) if you only have one asset.
         // `layout` on the first item tunes the overlap frame; tweak `feather`
@@ -258,6 +284,14 @@ export const siteConfig: SiteConfig = {
           "落地页宣传、Markdown 文档、博客，三位一体。每篇文档都有 humanize 与 agent 两种视图——既为读者，也为机器。",
         primaryCta: { label: "阅读文档", href: "/docs/" },
         secondaryCta: { label: "看看博客", href: "/blog/" },
+        note: {
+          prefix: "新功能：",
+          link: {
+            label: "MDX 与自定义组件",
+            href: "/docs/humanize/mdx-components/",
+          },
+          suffix: " —— 在文档里直接写 React。",
+        },
         media: [
           {
             type: "image",

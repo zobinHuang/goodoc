@@ -177,6 +177,7 @@ locales: {
     tagline, description,
     hero: { eyebrow, headline, subhead,
             primaryCta: { label, href }, secondaryCta: { label, href },
+            note: { prefix, link: { label, href }, suffix },  // optional line under subhead
             media: { type: "image", src: "/hero.png", alt: "…" } },  // optional
     features: [
       { title, body, image: "/features/landing.svg" },  // image optional
@@ -193,6 +194,11 @@ locales: {
   zh: { /* same shape */ },
 }
 ```
+
+`hero.note` (optional) adds a small line under the subhead — `prefix` + an
+optional inline `link` + `suffix`. Internal link hrefs are locale-relative
+(`/docs/…`, locale prefix added automatically); external (`https://…`) open in a
+new tab.
 
 Add a feature illustration by dropping an SVG/PNG in `public/features/` and
 referencing it as `image`. `hero.media` (optional) shows an image or video alongside the hero text. Pass

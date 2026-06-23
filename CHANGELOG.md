@@ -5,6 +5,13 @@ with `npm run upgrade -- --ref vX.Y.Z`. See [UPGRADING.md](./UPGRADING.md).
 
 ## Unreleased
 
+### Added
+- **Hero note** — an optional small line under the hero subhead, configured via
+  `hero.note` in `lib/site-config.ts`: a `prefix`, an optional inline `link`, and
+  a `suffix`. Internal link hrefs are locale-relative (locale prefix added
+  automatically); external `https://…` hrefs open in a new tab. Good for an
+  announcement or "backed by" line. Omit `note` to hide it.
+
 ### Changed
 - **Hero showcase framing is now tunable and the overlap feather is gentler.**
   `hero.media[].layout` exposes `textRatio` (text-column vs showcase-column

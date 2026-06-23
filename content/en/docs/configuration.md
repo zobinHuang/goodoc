@@ -61,6 +61,11 @@ en: {
     subhead: "Landing page, Markdown docs, and a blog — in one.",
     primaryCta: { label: "Read the docs", href: "/docs/" },
     secondaryCta: { label: "Visit the blog", href: "/blog/" },
+    note: {                                   // optional line under the subhead
+      prefix: "New: ",
+      link: { label: "MDX & components", href: "/docs/humanize/mdx-components/" },
+      suffix: " — write React in your docs.",
+    },
     media: { type: "image", src: "/hero-preview.svg", alt: "preview" }, // optional
   },
   features: [
@@ -89,6 +94,10 @@ en: {
 },
 ```
 
+- **`hero.note`** is optional — a small line under the subhead (e.g. an
+  announcement). `prefix` and `suffix` are plain text around an optional inline
+  `link`; an internal `href` (`/docs/…`) gets the locale prefix automatically,
+  an external one (`https://…`) opens in a new tab. Omit `note` to hide it.
 - **`hero.media`** is optional — an image or video shown alongside the hero
   text. Pass a single item **or an array**; arrays crossfade automatically
   every four seconds. Put files in `public/` and point `src` at them.

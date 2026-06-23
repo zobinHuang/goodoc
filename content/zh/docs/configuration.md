@@ -58,6 +58,11 @@ en: {
     subhead: "Landing page, Markdown docs, and a blog — in one.",
     primaryCta: { label: "Read the docs", href: "/docs/" },
     secondaryCta: { label: "Visit the blog", href: "/blog/" },
+    note: {                                   // 副标题下方的可选小字
+      prefix: "New: ",
+      link: { label: "MDX & components", href: "/docs/humanize/mdx-components/" },
+      suffix: " — write React in your docs.",
+    },
     media: { type: "image", src: "/hero-preview.svg", alt: "preview" }, // 可选
   },
   features: [
@@ -86,6 +91,9 @@ en: {
 },
 ```
 
+- **`hero.note`** 是可选的 —— 副标题下方的一行小字（例如公告）。`prefix` 与
+  `suffix` 是围绕可选行内 `link` 的纯文本；内部 `href`（`/docs/…`）会自动加上
+  语言前缀，外部 `href`（`https://…`）则在新标签页打开。省略 `note` 即不显示。
 - **`hero.media`** 是可选的 —— 在 hero 区域展示图片或视频。可传单个对象，
   也可传**数组**；传数组时会每四秒自动淡入淡出切换。把文件放进 `public/`，
   把 `src` 指过去。
