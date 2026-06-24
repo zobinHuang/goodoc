@@ -91,8 +91,14 @@ Body in GitHub-Flavored Markdown. Link locale-relative:
 ![diagram](/diagram.svg)
 ```
 
-- The **sidebar** groups by `group` and sorts by `order`. Give a batch the same
-  `group` and sequence them with `order`.
+- The **sidebar** is a nested tree. Two ways to organize it (combinable):
+  - **Flat + `group`**: files directly in `docs/` are grouped by their `group`
+    frontmatter, sorted by `order`.
+  - **Folders**: subfolders become nested sections, any depth. A folder's label
+    is its prettified name (`advanced` → "Advanced"); it sorts by the smallest
+    `order` inside. Add `index.md`/`index.mdx` to a folder to set its
+    title/order and give it a clickable overview page. The folder name is part
+    of the URL (`docs/guides/advanced/x.md` → `/docs/humanize/guides/advanced/x/`).
 - To translate, create the same file under another locale
   (`content/zh/docs/<slug>.md`) with a translated `title`/`group`. Untranslated
   pages **fall back** to the default locale automatically.

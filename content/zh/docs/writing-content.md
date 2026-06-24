@@ -46,8 +46,10 @@ draft: false             # 为 true 时仅在开发模式下可见
 
 ## 组织文档
 
-侧边栏按 `group` 给文档分组，并在每个组内按 `order` 排序。给一批文档赋予相同的
-`group`，再用 `order` 控制它们的先后顺序：
+两种方式来组织侧边栏 —— 任选其一，或同时使用。
+
+**带 `group` 的扁平文件。** 直接放在 `docs/` 里的文件，按其 `group` frontmatter
+分组，并在组内按 `order` 排序：
 
 ```text
 content/en/docs/
@@ -55,6 +57,23 @@ content/en/docs/
 ├── writing-content.md   # group: Getting Started, order: 2
 └── deployment.md        # group: Deployment, order: 1
 ```
+
+**嵌套文件夹。** 子文件夹会变成嵌套的侧边栏区块，可任意深度。文件夹的标签来自
+其名称并美化（`advanced` → "Advanced"）；它按内部页面中最小的 `order` 排序。在
+文件夹里加一个 `index.md`（或 `index.mdx`）即可设置它的标题/顺序，并给它一个可
+点击的概览页：
+
+```text
+content/en/docs/
+└── guides/
+    ├── index.md                  # 命名「指南」区块并作为其概览页
+    └── advanced/                 # 嵌套区块 "Advanced"
+        └── nested-folders.md     # → 指南 › Advanced › 嵌套文件夹
+```
+
+文件夹名会成为 URL 的一部分
+（`/docs/humanize/guides/advanced/nested-folders/`）。可参见本侧边栏中
+**指南 › Advanced** 下的实例。
 
 ## 链接与图片
 

@@ -5,6 +5,18 @@ with `npm run upgrade -- --ref vX.Y.Z`. See [UPGRADING.md](./UPGRADING.md).
 
 ## Unreleased
 
+### Added
+- **Nested docs.** The docs sidebar is now a tree built from subfolders under
+  `content/<locale>/docs/`, nesting as deep as you like. A folder's label is its
+  prettified name; an optional `index.md`/`index.mdx` sets a folder's title/order
+  and gives it a clickable overview page. Flat files with `group` frontmatter
+  still work and can coexist with folders. Prev/next now follow the sidebar's
+  reading order. Example shipped under **Guides › Advanced**.
+
+### Changed
+- **Doc section headings are no longer forced to uppercase** — sidebar groups and
+  docs-landing section titles now render in their natural mixed case.
+
 ### Fixed
 - **`npm run upgrade` can now run several times in a row without committing in
   between.** The dirty-tree safety check previously tripped on framework files

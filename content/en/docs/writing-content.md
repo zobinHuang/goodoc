@@ -46,8 +46,10 @@ draft: false             # When true, visible only in dev mode
 
 ## Organizing Documentation
 
-The sidebar groups documents by `group` and sorts each group by `order`. Give a batch of documents the same
-`group`, then use `order` to control their sequence:
+Two ways to structure the sidebar — use either, or both together.
+
+**Flat files with `group`.** Files placed directly in `docs/` are grouped by
+their `group` frontmatter and sorted by `order`:
 
 ```text
 content/en/docs/
@@ -55,6 +57,24 @@ content/en/docs/
 ├── writing-content.md   # group: Getting Started, order: 2
 └── deployment.md        # group: Deployment, order: 1
 ```
+
+**Nested folders.** Subfolders become nested sidebar sections, as deep as you
+like. A folder's label is its name, prettified (`advanced` → "Advanced"); it
+sorts by the smallest `order` of the pages inside it. Add an `index.md` (or
+`index.mdx`) to a folder to set its title/order and give it a clickable overview
+page:
+
+```text
+content/en/docs/
+└── guides/
+    ├── index.md                  # titles the "Guides" section + its overview
+    └── advanced/                 # nested section "Advanced"
+        └── nested-folders.md     # → Guides › Advanced › Nested Folders
+```
+
+The folder name becomes part of the URL
+(`/docs/humanize/guides/advanced/nested-folders/`). See the live example under
+**Guides › Advanced** in this sidebar.
 
 ## Links and Images
 
