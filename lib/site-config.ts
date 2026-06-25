@@ -66,6 +66,18 @@ export interface FeatureCard {
   video?: string;
   /** Poster frame shown before the video plays, e.g. "/features/demo-poster.png". */
   poster?: string;
+  /**
+   * Optional custom component for the card's media area, keyed into the
+   * `featureSlots` registry in `lib/feature-slots.tsx`. Takes priority over
+   * image/video.
+   */
+  slot?: string;
+  /**
+   * Optional link — turns the whole card into a clickable link with a hover
+   * affordance. Internal hrefs are locale-relative ("/docs/…", locale prefix
+   * added automatically); external hrefs ("https://…") open in a new tab.
+   */
+  href?: string;
 }
 
 export interface QuickstartStep {
@@ -250,21 +262,26 @@ export const siteConfig: SiteConfig = {
           title: "Landing page",
           body: "Say what your project is, what it does, and how to start — on one literary page. Restrained color, light theme only.",
           image: "/features/landing.svg",
+          // `href` makes the whole card a link (locale-relative or external).
+          href: "/docs/humanize/configuration/",
         },
         {
           title: "Two-view docs",
           body: "One Markdown source. The humanize view renders like a polished GitHub README; the agent view emits clean semantic HTML for machines.",
           image: "/features/two-views.svg",
+          href: "/docs/humanize/humanize-and-agent/",
         },
         {
           title: "Blog",
           body: "Write notes and updates in Markdown, sharing the docs' rendering: inline HTML, code highlighting, tables, and task lists.",
           image: "/features/blog.svg",
+          href: "/blog/",
         },
         {
           title: "Fully static",
           body: "Builds to a static site you can host on GitHub Pages or any static host. No server, instant loads.",
           image: "/features/static.svg",
+          href: "/docs/humanize/deployment/",
         },
       ],
       quickstart: {
@@ -332,21 +349,26 @@ export const siteConfig: SiteConfig = {
           title: "落地页",
           body: "用一页讲清楚项目是什么、能做什么、怎么开始。文艺的排版，克制的色彩，只有 light theme。",
           image: "/features/landing.svg",
+          // `href` 让整张卡片变成链接（语言相对或外链）。
+          href: "/docs/humanize/configuration/",
         },
         {
           title: "双视图文档",
           body: "同一份 Markdown，humanize 视图像 GitHub README 一样精致渲染，agent 视图输出干净的语义化 HTML 供机器阅读。",
           image: "/features/two-views.svg",
+          href: "/docs/humanize/humanize-and-agent/",
         },
         {
           title: "博客",
           body: "用 Markdown 写近期随笔与更新，和文档共享同一套渲染：HTML 内联、代码高亮、表格与任务列表。",
           image: "/features/blog.svg",
+          href: "/blog/",
         },
         {
           title: "纯静态",
           body: "构建为纯静态站点，可托管在 GitHub Pages 或任意静态主机。无服务器，秒级加载。",
           image: "/features/static.svg",
+          href: "/docs/humanize/deployment/",
         },
       ],
       quickstart: {

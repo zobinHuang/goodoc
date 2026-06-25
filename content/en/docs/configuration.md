@@ -181,8 +181,23 @@ en: {
   Custom slots can be mixed with images/videos in a carousel array, and inherit
   the same `below`/`overlap` framing. If a slot needs hooks or browser APIs, put
   its component in a file with a `"use client"` directive.
-- **`features[].image`** is optional — provide an SVG/PNG under `public/` to
-  illustrate a card, or omit it for text only.
+- **`features[]`** each render a card. The media area (top of the card) can be:
+  - `image` — an SVG/PNG under `public/`,
+  - `video` (+ optional `poster`) — a muted, looping clip, or
+  - `slot` — a custom component registered in `lib/feature-slots.tsx` (yours;
+    seeded on upgrade, never overwritten). `slot` takes priority over
+    image/video. Omit all three for a text-only card.
+
+  Add `href` to make the **whole card a link** (with a hover affordance): an
+  internal `/docs/…` gets the locale prefix automatically; an external
+  `https://…` opens in a new tab.
+
+  ```ts
+  features: [
+    { title: "Guide", body: "…", image: "/features/guide.svg", href: "/docs/humanize/getting-started/" },
+    { title: "Live", body: "…", slot: "demo" },   // component from feature-slots.tsx
+  ]
+  ```
 - **`quickstart`** powers the landing page's install section: a terminal showing
   `command` plus the numbered `steps`. Use backticks in a step's `body` for
   inline code.

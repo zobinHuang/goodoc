@@ -33,7 +33,8 @@
   ],
   "seed": [
     "lib/hero-slots.tsx",
-    "lib/mdx-components.tsx"
+    "lib/mdx-components.tsx",
+    "lib/feature-slots.tsx"
   ],
   "userOwned": [
     "content",
@@ -41,6 +42,7 @@
     "lib/site-config.ts",
     "lib/hero-slots.tsx",
     "lib/mdx-components.tsx",
+    "lib/feature-slots.tsx",
     "app/theme.css",
     "README.md",
     "LICENSE"

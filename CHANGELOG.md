@@ -6,6 +6,12 @@ with `npm run upgrade -- --ref vX.Y.Z`. See [UPGRADING.md](./UPGRADING.md).
 ## Unreleased
 
 ### Added
+- **Feature cards: custom components and links.** A `features[]` card can now use
+  `slot` — a custom component from the new user-owned `lib/feature-slots.tsx`
+  registry (seeded on upgrade like `hero-slots.tsx`) — in its media area, taking
+  priority over `image`/`video`. And `href` turns the whole card into a link with
+  a hover affordance (internal hrefs are locale-relative; external `https://…`
+  open in a new tab).
 - **Nested docs.** The docs sidebar is now a tree built from subfolders under
   `content/<locale>/docs/`, nesting as deep as you like. A folder's label is its
   prettified name; an optional `index.md`/`index.mdx` sets a folder's title/order

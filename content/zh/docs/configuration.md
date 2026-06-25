@@ -175,8 +175,21 @@ en: {
   自定义槽位可与图片/视频混在同一个轮播数组里，并继承同样的 `below`/`overlap`
   框架。若某个槽位需要 hooks 或浏览器 API，把它的组件放进带 `"use client"`
   指令的文件里。
-- **`features[].image`** 是可选的 —— 在 `public/` 下提供一张 SVG/PNG
-  来给卡片配图，或者省略它只用文字。
+- **`features[]`** 每一项渲染一张卡片。卡片顶部的媒体区可以是：
+  - `image` —— `public/` 下的 SVG/PNG，
+  - `video`（可选 `poster`）—— 静音循环播放的片段，或
+  - `slot` —— 在 `lib/feature-slots.tsx`（属于你；升级时补齐、永不覆盖）里注册的
+    自定义组件。`slot` 优先级高于 image/video。三者都省略即纯文字卡片。
+
+  加上 `href` 可让**整张卡片变成链接**（带 hover 效果）：内部 `/docs/…` 会自动加
+  语言前缀；外部 `https://…` 在新标签页打开。
+
+  ```ts
+  features: [
+    { title: "Guide", body: "…", image: "/features/guide.svg", href: "/docs/humanize/getting-started/" },
+    { title: "Live", body: "…", slot: "demo" },   // 来自 feature-slots.tsx 的组件
+  ]
+  ```
 - **`quickstart`** 驱动落地页的安装区块：一个显示 `command` 的终端，加上带编号的
   `steps`。在某个步骤的 `body` 中用反引号来写行内代码。
 - **`nav`** 的 label 会按语言翻译；`href` 保持语言相对
