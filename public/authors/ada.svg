@@ -1,0 +1,12 @@
+<svg width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ada Lovelace avatar">
+  <defs>
+    <linearGradient id="ada-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0d9cf"/>
+      <stop offset="1" stop-color="#e3cabf"/>
+    </linearGradient>
+  </defs>
+  <circle cx="48" cy="48" r="48" fill="url(#ada-bg)"/>
+  <circle cx="48" cy="40" r="15" fill="#a65a3f"/>
+  <path d="M20 84a28 28 0 0 1 56 0z" fill="#a65a3f"/>
+  <text x="48" y="56" font-family="Georgia, 'PT Serif', serif" font-size="34" font-weight="700" fill="#fbf9f4" text-anchor="middle" opacity="0">A</text>
+</svg>

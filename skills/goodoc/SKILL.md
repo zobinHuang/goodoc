@@ -35,6 +35,7 @@ default. Blog mirrors docs at `/<lang>/blog/{humanize,agent}/<slug>/`.
    - `lib/site-config.ts` — project identity, landing copy, nav, footer
    - `lib/hero-slots.tsx` — your custom hero showcase components
    - `lib/feature-slots.tsx` — your custom components for feature-card media
+   - `lib/authors.ts` — blog author registry
    - `lib/mdx-components.tsx` — your components for use inside `.mdx` content
    - `app/theme.css` — palette and font tokens
    - `public/` — images and assets
@@ -59,6 +60,7 @@ content/<locale>/blog/*.md|mdx blog posts            ← author here
 lib/site-config.ts             identity, hero, features, quickstart, nav, footer
 lib/hero-slots.tsx             custom hero showcase components   ← author here
 lib/feature-slots.tsx          custom feature-card media         ← author here
+lib/authors.ts                 blog author registry              ← author here
 lib/mdx-components.tsx         components usable inside .mdx     ← author here
 app/theme.css                  colors + font variables
 public/                        images/assets (e.g. /features/*.svg)
@@ -115,12 +117,33 @@ title: Post Title
 description: One-line summary.
 date: 2026-06-22            # ISO date; posts sort newest-first
 tags: [Announcement]
+authors: [ada, lin]        # optional; see Authors below
 ---
 
 # Post Title
 
 Same Markdown + rendering as docs.
 ```
+
+**Authors** (optional) show under the post title (avatar, name, affiliation ·
+email) and as a compact byline in the blog index. Register them once in the
+user-owned `lib/authors.ts` (seeded on upgrade, never overwritten) and reference
+by key, or write one inline:
+
+```ts
+// lib/authors.ts
+export const authors = {
+  ada: { name: "Ada Lovelace", avatar: "/authors/ada.svg", email: "ada@goodoc.dev", affiliation: "goodoc", url: "https://…" },
+};
+```
+```markdown
+authors: [ada]                       # registry key
+# or inline:
+authors:
+  - { name: Guest, affiliation: Acme, email: g@acme.dev }
+```
+
+Avatars are images under `public/` (omit for a monogram fallback).
 
 ## Task: embed custom components in content (MDX)
 

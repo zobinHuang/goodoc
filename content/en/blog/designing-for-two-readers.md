@@ -3,6 +3,7 @@ title: Designing for Two Readers
 description: Why goodoc gives every document two views—humanize and agent.
 date: 2026-06-18
 tags: [Design, Philosophy]
+authors: [ada]
 ---
 
 # Designing for Two Readers

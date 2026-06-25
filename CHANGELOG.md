@@ -6,6 +6,12 @@ with `npm run upgrade -- --ref vX.Y.Z`. See [UPGRADING.md](./UPGRADING.md).
 ## Unreleased
 
 ### Added
+- **Blog authors.** A post's `authors` frontmatter renders an author list under
+  the title — avatar, name (optionally linked), and an affiliation · email line —
+  plus a compact byline in the blog index. Define authors once in the new
+  user-owned `lib/authors.ts` registry (seeded on upgrade, never overwritten) and
+  reference them by key, or write an author inline in frontmatter. Avatars live
+  under `public/` (a monogram is shown when omitted).
 - **Feature cards: custom components and links.** A `features[]` card can now use
   `slot` — a custom component from the new user-owned `lib/feature-slots.tsx`
   registry (seeded on upgrade like `hero-slots.tsx`) — in its media area, taking

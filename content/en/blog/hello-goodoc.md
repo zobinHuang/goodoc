@@ -3,6 +3,7 @@ title: Hello, goodoc
 description: Introducing goodoc—a slightly literary documentation framework written for humans and machines.
 date: 2026-06-21
 tags: [Announcement]
+authors: [ada, lin]
 ---
 
 # Hello, goodoc

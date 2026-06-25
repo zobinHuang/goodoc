@@ -3,6 +3,7 @@ title: 为两种读者而设计
 description: 为什么 goodoc 给每篇文档准备了 humanize 与 agent 两个视图。
 date: 2026-06-18
 tags: [设计, 理念]
+authors: [ada]
 ---
 
 # 为两种读者而设计

@@ -3,6 +3,7 @@ title: 你好，goodoc
 description: 介绍 goodoc——一个偏文艺的、为人与机器而写的文档框架。
 date: 2026-06-21
 tags: [公告]
+authors: [ada, lin]
 ---
 
 # 你好，goodoc

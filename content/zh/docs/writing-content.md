@@ -30,6 +30,7 @@ group: Getting Started   # 侧边栏分组（仅文档）
 order: 1                 # 组内顺序；值越小越靠前（仅文档）
 date: 2026-06-21         # 发布日期（仅博客，用于排序）
 tags: [Design, Rendering] # 标签（仅博客）
+authors: [ada, lin]      # 作者（仅博客）—— 见下文
 draft: false             # 为 true 时仅在开发模式下可见
 ---
 ```
@@ -42,7 +43,43 @@ draft: false             # 为 true 时仅在开发模式下可见
 | `order` | 文档 | 组内排序键 |
 | `date` | 博客 | ISO 日期，用于倒序排列 |
 | `tags` | 博客 | 标签数组 |
+| `authors` | 博客 | 标题下方展示的作者（见下文） |
 | `draft` | 文档 / 博客 | 草稿；在生产构建中隐藏 |
+
+## 博客作者
+
+文章的 `authors` 列表会在标题下方展示每位作者——头像、姓名，以及一行
+单位 · 邮箱——并在博客列表里显示一行紧凑署名。在 `lib/authors.ts` 里集中
+定义一次作者，再用 key 引用：
+
+```ts
+// lib/authors.ts（属于你 —— 升级时补齐、永不覆盖）
+export const authors = {
+  ada: {
+    name: "Ada Lovelace",
+    avatar: "/authors/ada.svg",   // public/ 下的图片（省略则显示首字母圆标）
+    email: "ada@goodoc.dev",       // 渲染为 mailto 链接
+    affiliation: "goodoc",         // 单位 / 组织
+    url: "https://example.com",    // 可选；让作者名链接过去
+  },
+};
+```
+
+```markdown
+---
+title: 我的文章
+authors: [ada, lin]    # 注册表的 key
+---
+```
+
+也可以在 frontmatter 里直接内联一个作者，而不注册：
+
+```markdown
+authors:
+  - name: Guest Writer
+    affiliation: Acme
+    email: guest@acme.dev
+```
 
 ## 组织文档
 

@@ -30,6 +30,7 @@ group: Getting Started   # Sidebar group (docs only)
 order: 1                 # Order within the group; lower comes first (docs only)
 date: 2026-06-21         # Publish date (blog only, used for sorting)
 tags: [Design, Rendering] # Tags (blog only)
+authors: [ada, lin]      # Authors (blog only) — see below
 draft: false             # When true, visible only in dev mode
 ---
 ```
@@ -42,7 +43,43 @@ draft: false             # When true, visible only in dev mode
 | `order` | docs | Sort key within a group |
 | `date` | blog | ISO date, used for reverse-chronological sorting |
 | `tags` | blog | Array of tags |
+| `authors` | blog | Authors shown under the title (see below) |
 | `draft` | docs / blog | Draft; hidden in production builds |
+
+## Blog Authors
+
+A post's `authors` list shows each author — avatar, name, and an
+affiliation · email line — under the title, and a compact byline in the blog
+index. Define authors once in `lib/authors.ts` and reference them by key:
+
+```ts
+// lib/authors.ts  (yours — seeded on upgrade, never overwritten)
+export const authors = {
+  ada: {
+    name: "Ada Lovelace",
+    avatar: "/authors/ada.svg",   // image under public/ (omit for a monogram)
+    email: "ada@goodoc.dev",       // rendered as a mailto link
+    affiliation: "goodoc",         // organization / unit
+    url: "https://example.com",    // optional; links the author's name
+  },
+};
+```
+
+```markdown
+---
+title: My Post
+authors: [ada, lin]    # registry keys
+---
+```
+
+You can also write an author inline instead of registering it:
+
+```markdown
+authors:
+  - name: Guest Writer
+    affiliation: Acme
+    email: guest@acme.dev
+```
 
 ## Organizing Documentation
 
